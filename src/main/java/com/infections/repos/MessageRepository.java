@@ -9,5 +9,5 @@ import java.util.List;
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
     Message findById(long id);
-    List<Message> findByTag(String tag);
+    List<Message> findByHeader(String header);
 }

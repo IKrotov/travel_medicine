@@ -11,10 +11,15 @@
 
 <body>
 <div>
-    <form method="POST" name="messageForm" action="/registration">
+    <form method="POST" name="userForm" action="/registration">
         <h2>Регистрация</h2>
         <div>
             <input type="text" name="username" placeholder="Username"/>
+            <!--<errors path="username"></errors>-->
+            <!--${usernameError}-->
+        </div>
+        <div>
+            <input type="text" name="email" placeholder="Email"/>
             <!--<errors path="username"></errors>-->
             <!--${usernameError}-->
         </div>

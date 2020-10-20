@@ -1,15 +1,56 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Spring Security Example</title>
+    <title>СНК "Медицина Путешествий"</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<style>
+.img-preview {
+    background: no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+    /*max-height: 300px;*/
+}
+    .card-link-1 {
+        background-color: cornflowerblue;
+        width: 100%;
+        text-align: center;
+        height: 200px;
+        display: block;
+    }
+
+</style>
+
 <body>
-<h1>Welcome!</h1>
+
+<h1>Welcome! (тут картинка-банер с логотипом / фоточки)</h1>
 
 <p>Click <a th:href="@{/greeting}">here</a> to see a greeting.</p>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">СНК "Медицина путешествий"</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Страны <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Памятка туристу</a>
+            <a class="nav-item nav-link" href="#">Заболевания</a>
+            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+        </div>
+    </div>
+</nav>
+
+
 <div>
-    <h3>${pageContext.request.userPrincipal.name}</h3>
     <sec:authorize access="!isAuthenticated()">
         <h4><a href="/login">Войти</a></h4>
         <h4><a href="/registration">Зарегистрироваться</a></h4>
@@ -17,26 +58,46 @@
     <sec:authorize access="isAuthenticated()">
         <h4><a href="/logout">Выйти</a></h4>
     </sec:authorize>
-    <h4><a href="/news">Новости (только пользователь)</a></h4>
     <h4><a href="/admin">Пользователи (только админ)</a></h4>
 </div>
 
-<h1>messages</h1>
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th>Message</th>
-            <th>Tag</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="message: ${messages}">
-            <td><span th:text="${message.text}">Text</span></td>
-            <td><span th:text="${message.tag}">Tag</span></td>
-        </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+        <div class="card">
+                <a class="card-link-1" href="#">
+                    <span> Путешественикам </span>
+                </a>
+        </div>
+        </div>
+        <div class="col-sm-5">
+        <div>
+            <a class="card-link-1" href="#">
+                Клиницистам
+            </a>
+        </div>
+        </div>
 </div>
+
+
+<h1 class="text-center mb-5">Новости</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" th:each="message:${messages}">
+            <div class="card mb-4">
+                <div class="img-preview"  th:style="'background-image:url('+ @{'/img/'+${message.fileName}} +');'">
+                    <!--<img  class="card-img-top" th:src="@{'/img/'+${message.fileName}}" alt="Card image cap"/>-->
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${message.header}">Card title</h5>
+                    <p class="card-text" th:text="${message.text}" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Открыть новость</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>

@@ -10,11 +10,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
-public class GreetingController {
+public class HomeController {
 
     @Autowired
     MessageRepository messageRepository;
+
+    @GetMapping("/")
+    public String homePage(Model model){
+        List<Message> messages = messageRepository.findAll();
+        model.addAttribute("messages", messages);
+        return "home";
+    }
 
     @GetMapping("/greeting")
     public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World!") String name, Model model){

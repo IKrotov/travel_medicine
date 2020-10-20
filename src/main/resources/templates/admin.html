@@ -4,39 +4,125 @@
     <meta charset="utf-8">
     <title>Log in with your account</title>
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
-<body>
 
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>UserName</th>
-            <th>Password</th>
-            <th>Roles</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr th:each="user:${allUsers}">
-                <td><span th:text="${user.id}">id</span></td>
-                <td><span th:text="${user.username}">name</span></td>
-                <td><span th:text="${user.password}">password</span></td>
-                <!--<td>-->
-                    <!--<c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>-->
-                <!--</td>-->
-                <td>
-                    <form action="${pageContext.request.contextPath}/admin" method="post">
-                        <input type="hidden" name="userId" value="${user.id}"/>
-                        <input type="hidden" name="action" value="delete"/>
-                        <button type="submit">Delete</button>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<body>
+<div class="container">
+    <h1> Панель администратора </h1>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="true">Новости</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Статьи</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-users-tab" data-toggle="pill" href="#pills-users" role="tab" aria-controls="pills-users" aria-selected="false">Управление пользователями</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
+            <div class="m-3 p-">
+                <h3>Добавление новостей</h3>
+                <div>
+                    <form name="message-form" method="post" action="/admin/addMessage" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="header">Заголовок новостиs</label>
+                            <input name="header" type="text" class="form-control" id="header" placeholder="Заголовок новости">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Текст новости</label>
+                            <textarea name="text" class="form-control" id="text" rows="6"></textarea>
+                        </div>
+                        <!--<input type="file" name="file" placeholder="прикрепить Файл">-->
+                        <div class="form-group">
+                            <label for="file">Прикрепить картинку для новости</label>
+                            <input type="file" name="file" class="form-control-file" id="file">
+                        </div>
+                        <button type="submit" class="btn btn-primary"> Опубликовать </button>
                     </form>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="/">Главная</a>
+                </div>
+
+                <div class="row m-3 p-3">
+                    <div class="block">
+                        <h3>Загруженные новости</h3>
+                    </div>
+                </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Заголовок новости</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="message:${messages}">
+                                <th scope="row" th:text="${message.id}">id</th>
+                                <td th:text="${message.header}">username</td>
+                                <td>
+                                    <form action="/admin/deleteMsg" method="post">
+                                        <input type="hidden" name="messageId" th:value="${message.id}"/>
+                                        <input type="hidden" name="action" value="delete"/>
+                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <h2>Здесь будут статьи</h2>
+        </div>
+        <div class="tab-pane fade" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab">
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Roles</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user:${allUsers}">
+                    <th scope="row" th:text="${user.id}">id</th>
+                    <td th:text="${user.username}">username</td>
+                    <td th:text="${user.email}">email</td>
+                    <td>
+                        <div th:each="role:${user.roles}">
+                            <p th:text="${role.name}">role</p>
+                        </div>
+                    </td>
+                    <td>
+                        <form action="/admin" method="post">
+                            <input type="hidden" name="userId" th:value="${user.id}"/>
+                            <input type="hidden" name="action" value="delete"/>
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/">Главная</a>
+    </div>
 </div>
 </body>
+
 </html>

@@ -12,13 +12,13 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     private String text;
-    private String tag;
+    private String header;
+    private String fileName;
 
-    public Message(String text, String tag) {
+    public Message(String text, String header) {
         this.text = text;
-        this.tag = tag;
+        this.header = header;
     }
 
     public Message() {
@@ -41,11 +41,19 @@ public class Message {
         this.text = text;
     }
 
-    public String getTag() {
-        return tag;
+    public String getHeader() {
+        return header;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
