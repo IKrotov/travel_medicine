@@ -1,6 +1,8 @@
 package com.infections.controllers;
 
 import com.infections.model.Message;
+import com.infections.repos.CountryRepository;
+import com.infections.services.CountryService;
 import com.infections.services.MessageService;
 import com.infections.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +23,19 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
-
     @Autowired
     private MessageService messageService;
+    @Autowired
+    private CountryService countryService;
 
     @Value("${upload.path}")
     private String uploadPath;
 
     @GetMapping("/admin")
-    public String getUserList(Model model){
+    public String getAllEntities(Model model){
         model.addAttribute("allUsers", userService.findAllUsers());
         model.addAttribute("messages", messageService.getAllMessages());
+        model.addAttribute("allCountry", countryService.getAllCountry());
         return "admin";
     }
 
