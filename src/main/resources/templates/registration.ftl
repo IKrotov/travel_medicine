@@ -1,15 +1,16 @@
+<#import "parts/common.ftl" as c>
+<@c.page>
+<#--<!DOCTYPE html>-->
+<#--<html>-->
+<#--<head>-->
+    <#--<meta charset="utf-8">-->
+    <#--<title>Регистрация</title>-->
+    <#--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">-->
+    <#--<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>-->
+    <#--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+<#--</head>-->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Регистрация</title>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
-
-<body>
+<#--<body>-->
 
 <div>
     <form class="form-horizontal" action='/registration' method="POST">
@@ -62,33 +63,4 @@
         </fieldset>
     </form>
 </div>
-
-
-<!--<div>-->
-    <!--<form method="POST" name="userForm" action="/registration">-->
-        <!--<h2>Регистрация</h2>-->
-        <!--<div>-->
-            <!--<input type="text" name="username" placeholder="Username"/>-->
-            <!--&lt;!&ndash;<errors path="username"></errors>&ndash;&gt;-->
-            <!--&lt;!&ndash;${usernameError}&ndash;&gt;-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<input type="text" name="email" placeholder="Email"/>-->
-            <!--&lt;!&ndash;<errors path="username"></errors>&ndash;&gt;-->
-            <!--&lt;!&ndash;${usernameError}&ndash;&gt;-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<input type="password" name="password" placeholder="Password"/>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<input type="password" name="passwordConfirm"-->
-                        <!--placeholder="Confirm your password"/>-->
-            <!--&lt;!&ndash;<errors path="password"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;${passwordError}&ndash;&gt;-->
-        <!--</div>-->
-        <!--<button type="submit">Зарегистрироваться</button>-->
-    <!--</form>-->
-    <!--<a href="/">Главная</a>-->
-<!--</div>-->
-</body>
-</html>
+</@c.page>

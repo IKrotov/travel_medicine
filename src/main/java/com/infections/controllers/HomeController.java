@@ -21,7 +21,7 @@ public class HomeController {
     public String homePage(Model model){
         List<Message> messages = messageRepository.findAll();
         model.addAttribute("messages", messages);
-        return "home.html";
+        return "home";
     }
 
     @GetMapping("/greeting")
