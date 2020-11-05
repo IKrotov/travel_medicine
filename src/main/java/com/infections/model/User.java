@@ -54,6 +54,16 @@ public class User implements UserDetails {
         }
         return false;
     }
+    public void addAdminRole(){
+        roles.add(new Role(2L, "ROLE_ADMIN"));
+    }
+    public void deleteAdminRole(){
+        for (Role role: roles){
+            if (role.getName().equals("ROLE_ADMIN")){
+                roles.remove(role);
+            }
+        }
+    }
 
     @Override
     public boolean isAccountNonExpired() {

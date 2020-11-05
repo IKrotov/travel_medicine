@@ -1,7 +1,7 @@
 package com.infections.controllers;
 
 import com.infections.model.Message;
-import com.infections.repos.CountryRepository;
+import com.infections.model.Vaccine;
 import com.infections.services.CountryService;
 import com.infections.services.MessageService;
 import com.infections.services.UserService;
@@ -45,8 +45,9 @@ public class AdminController {
                              Model model){
         if (action.equals("delete")){
             userService.deleteUser(userId);
+        } else if (action.equals("setAdminRole")){
+           userService.changeUserAdminRole(userId);
         }
-
         return "redirect:/admin";
     }
 
@@ -85,6 +86,25 @@ public class AdminController {
 
         }
         messageService.saveMessage(message);
+
+        return "redirect:/admin";
+    }
+
+    // !!!!!!
+    @PostMapping("admin/country")
+    public String chooseCountry(@RequestParam int countryId, Model model){
+        model.addAttribute("currentCountry", countryService.getCountry(countryId));
+
+        return "redirect:/admin#country";
+    }
+
+    @PostMapping("admin/country/vaccine")
+    public String addVaccineToCountry(@RequestParam int countryId,
+                                      @RequestParam String vacName,
+                                      @RequestParam String recommendation,
+                                      @RequestParam String transmission, Model model){
+        Vaccine vaccine = new Vaccine(vacName, recommendation, transmission);
+        countryService.addVaccineToCountry(countryId, vaccine);
 
         return "redirect:/admin";
     }

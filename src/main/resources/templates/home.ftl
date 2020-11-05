@@ -1,23 +1,7 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
 
-<#--<!DOCTYPE html>-->
-<#--<html xmlns="http://www.w3.org/1999/xhtml">-->
-<#--&lt;#&ndash;xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"&ndash;&gt;-->
-<#--<head>-->
-    <#--<title>СНК "Медицина Путешествий"</title>-->
-
-    <#--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">-->
-    <#--<link rel="stylesheet" href="/static/home.css">-->
-<#--</head>-->
-
-<#--<body>-->
-
 <h1>Welcome! (тут картинка-банер с логотипом / фоточки)</h1>
-
-<#--<p>Click <a th:href="@{/greeting}">here</a> to see a greeting.</p>-->
-
-
 
 <#--<div>-->
     <#--<sec:authorize access="isAuthenticated()">-->
@@ -29,7 +13,7 @@
     <#--</div>-->
 <#--</div>-->
 
-<div class="container pb-5">
+<div class="container pb-5 ">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -83,29 +67,35 @@
     </div>
 </div>
 
+ <hr class="featurette-divider featurette">
 
-<div class="container text-center mb-3">
+<div class="container text-center mb-3 mt-3">
     <div class="row">
         <div class="col">
-            <div class="card mb-3 div-link">
+            <div class="card mb-3 mt-3 div-link">
                 <div class="card-body">
-                    <h3 class="card-title" >Путешественникам</h3>
+                    <div style="height: 75px"></div>
+                    <h2 class="card-title">Путешественникам</h2>
+                    <div style="height: 75px"></div>
                     <a href="/country" class="stretched-link"></a>
                 </div>
             </div>
         </div>
 
         <div class="col">
-            <div class="card mb-3 div-link">
+            <div class="card mb-3 mt-3 div-link">
                 <div class="card-body">
-                    <h3 class="card-title" >Клиницистам</h3>
+                    <div style="height: 75px"></div>
+                    <h2 class="card-title" >Клиницистам</h2>
+                    <div style="height: 75px"></div>
                     <a href="/country" class="stretched-link"></a>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+
+ <hr class="featurette-divider">
 
 <h1 class="text-center mb-5">Новости</h1>
 <div class="container">
@@ -126,5 +116,6 @@
 
     </div>
 </div>
+
 
 </@c.page>
