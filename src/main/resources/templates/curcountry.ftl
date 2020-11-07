@@ -69,7 +69,7 @@
                         <tbody>
                         <#list country.vaccines as vaccine>
                             <tr>
-                                <td>${vaccine.vacName}</td>
+                                <td><a href="${vaccine.url}">${vaccine.vacName}</a></td>
                                 <td>${vaccine.recommendation}</td>
                                 <td>${vaccine.transmission}</td>
                             </tr>

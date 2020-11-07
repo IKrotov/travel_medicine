@@ -34,4 +34,16 @@ public class CountryService {
         country.addVaccine(vaccine);
         countryRepository.save(country);
     }
+
+    public void deleteVaccine(int countryId, int vaccineId){
+
+        Country country = countryRepository.findById(countryId).get();
+
+        for (Vaccine vaccine :country.getVaccines()){
+            if (vaccine.getId() == vaccineId){
+                country.deleteVaccine(vaccine);
+            }
+        }
+        countryRepository.save(country);
+    }
 }

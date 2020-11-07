@@ -1,8 +1,6 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
 
-<h1>Welcome! (тут картинка-банер с логотипом / фоточки)</h1>
-
 <#--<div>-->
     <#--<sec:authorize access="isAuthenticated()">-->
         <#--<h4><a href="/logout">Выйти</a></h4>-->

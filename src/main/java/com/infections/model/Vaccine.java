@@ -15,15 +15,17 @@ public class Vaccine {
     private String vacName;
     private String recommendation;
     private String transmission;
+    private String url;
 
     public Vaccine() {
 
     }
 
-    public Vaccine(String vacName, String recommendation, String transmission) {
+    public Vaccine(String vacName, String recommendation, String transmission, String url) {
         this.vacName = vacName;
         this.recommendation = recommendation;
         this.transmission = transmission;
+        this.url = url;
     }
 
     public long getId() {
@@ -56,5 +58,13 @@ public class Vaccine {
 
     public void setTransmission(String transmission) {
         this.transmission = transmission;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

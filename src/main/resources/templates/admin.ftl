@@ -26,7 +26,7 @@
                             <form name="message-form" method="post" action="/admin/addMessage" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="header">Заголовок новости</label>
-                                    <input name="header" type="text" class="form-control" id="header" placeholder="Заголовок новости">
+                                    <textarea name="header" class="form-control" id="header" rows="1"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="text">Текст новости</label>
@@ -78,15 +78,16 @@
                     <div class="row m-3">
                         <div class="col-3">
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Вакцинация</a>
+                                <a class="nav-link active" id="v-pills-vaccine-tab" data-toggle="pill" href="#v-pills-vaccine" role="tab" aria-controls="v-pills-vaccine" aria-selected="true">Вакцинация</a>
                                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Другие болезни</a>
                                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Профилактика</a>
                                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Аптечка</a>
+                                <a class="nav-link" id="v-pills-settings-after-trip" data-toggle="pill" href="#v-pills-after-trip" role="tab" aria-controls="v-pills-after-trip" aria-selected="false">После поездки</a>
                             </div>
                         </div>
                         <div class="col-9">
                             <div class="tab-content" id="v-pills-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                <div class="tab-pane fade show active" id="v-pills-vaccine" role="tabpanel" aria-labelledby="v-pills-vaccine-tab">
                                     <h3>Добавление вакцин</h3>
                                     <div>
                                         <form name="vaccine-form" method="post" action="admin/country/vaccine" enctype="multipart/form-data">
@@ -100,6 +101,10 @@
                                             <div class="form-group">
                                                 <label for="vacName">Название вакцины</label>
                                                 <input name="vacName" type="text" class="form-control" id="vacName" placeholder="Название вакцины">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="url">Ссылка </label>
+                                                <textarea name="url" class="form-control" id="url" rows="1"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="recommendation">Рекомендации</label>
@@ -139,8 +144,8 @@
                                                         <th scope="row">${vaccine.id}</th>
                                                         <td>${vaccine.vacName}</td>
                                                         <td>
-                                                            <form action="/admin/country/vaccine" method="post">
-                                                                <input type="hidden" name="messageId" value="${vaccine.id}"/>
+                                                            <form action="/admin/country/vaccine/${vaccine.id}" method="post">
+                                                                <input type="hidden" name="countryId" value="${country.id}">
                                                                 <input type="hidden" name="action" value="delete"/>
                                                                 <button type="submit" class="btn btn-outline-danger">Delete</button>
                                                             </form>
@@ -156,6 +161,7 @@
                                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Здесь болезни</div>
                                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Здесь профилактика</div>
                                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Здесь артечки</div>
+                                <div class="tab-pane fade" id="v-pills-after-trip" role="tabpanel" aria-labelledby="v-pills-after-trip-tab">Здесь после путешествия</div>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 package com.infections.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -67,5 +68,25 @@ public class Country {
 
     public void addVaccine(Vaccine vaccine){
         vaccines.add(vaccine);
+    }
+    public void deleteVaccine(Vaccine vaccine){
+        vaccines.remove(vaccine);
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return id == country.id &&
+                Objects.equals(countryName, country.countryName) &&
+                Objects.equals(flagFileName, country.flagFileName) &&
+                Objects.equals(mapFileName, country.mapFileName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, countryName, flagFileName, mapFileName);
     }
 }

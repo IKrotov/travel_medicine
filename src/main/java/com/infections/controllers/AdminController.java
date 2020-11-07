@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -102,9 +100,18 @@ public class AdminController {
     public String addVaccineToCountry(@RequestParam int countryId,
                                       @RequestParam String vacName,
                                       @RequestParam String recommendation,
-                                      @RequestParam String transmission, Model model){
-        Vaccine vaccine = new Vaccine(vacName, recommendation, transmission);
+                                      @RequestParam String transmission,
+                                      @RequestParam String url, Model model){
+        Vaccine vaccine = new Vaccine(vacName, recommendation, transmission, url);
         countryService.addVaccineToCountry(countryId, vaccine);
+
+        return "redirect:/admin";
+    }
+
+    @PostMapping("admin/country/vaccine/{vaccineId}")
+    public String deleteVaccine(@RequestParam int countryId, @PathVariable int vaccineId){
+
+        countryService.deleteVaccine(countryId, vaccineId);
 
         return "redirect:/admin";
     }
