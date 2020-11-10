@@ -12,7 +12,7 @@
 
 <div class="container">
     <form action="/login" method="post" class="form-signin">
-        <img class="mb-4" src="/img/logo.jpg" alt="" width="72" height="72">
+        <img class="mb-4" src="/img/snk_logo.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="text" id="inputEmail" class="form-control" name="username" placeholder="Username" required>

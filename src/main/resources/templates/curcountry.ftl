@@ -54,9 +54,16 @@
                     <h1 class="h2">${country.countryName}</h1>
                 </div>
 
-                <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+                <#--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
+                <#if country.mapFileName??>
+                     <div class="block">
+                         <img src="/img/${country.mapFileName}" style="width: 50%; max-height: 400px">
+                     </div>
+                </#if>
 
+                <div class="row m-6 p-6">
                 <h2>Вакцинация</h2>
+
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
@@ -76,6 +83,40 @@
                         </#list>
                         </tbody>
                     </table>
+                </div>
+                </div>
+
+                <div class="row m-6 p-6">
+                <h2>Другие заболевания</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>Заболевание</th>
+                            <th>Профелактика</th>
+                            <th>Комментарии</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <#list country.otherDiseasesSet as diseases>
+                        <tr>
+                            <td>
+                                <#if diseases.url?has_content>
+                                    <a href="${diseases.url}">
+                                        ${diseases.disName}
+                                    </a>
+                                    <#else>
+                                        ${diseases.disName}
+                                </#if>
+                            </td>
+                            <td>${diseases.prevention}</td>
+                            <td>${diseases.comment}</td>
+                        </tr>
+                        </#list>
+                        </tbody>
+                    </table>
+                </div>
                 </div>
             </main>
         </div>

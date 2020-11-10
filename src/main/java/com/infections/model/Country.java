@@ -15,8 +15,11 @@ public class Country {
     private String flagFileName;
     private String mapFileName;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Vaccine> vaccines;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<OtherDiseases> otherDiseasesSet;
 
     public Country(String countryName, String flagFileName, String mapFileName) {
         this.countryName = countryName;
@@ -66,6 +69,14 @@ public class Country {
         this.vaccines = vaccines;
     }
 
+    public Set<OtherDiseases> getOtherDiseasesSet() {
+        return otherDiseasesSet;
+    }
+
+    public void setOtherDiseasesSet(Set<OtherDiseases> otherDiseasesSet) {
+        this.otherDiseasesSet = otherDiseasesSet;
+    }
+
     public void addVaccine(Vaccine vaccine){
         vaccines.add(vaccine);
     }
@@ -73,6 +84,13 @@ public class Country {
         vaccines.remove(vaccine);
     }
 
+    public void addDiseases(OtherDiseases otherDiseases){
+        otherDiseasesSet.add(otherDiseases);
+    }
+
+    public void deleteDiseases(OtherDiseases otherDiseases){
+        otherDiseasesSet.remove(otherDiseases);
+    }
 
     @Override
     public boolean equals(Object o) {

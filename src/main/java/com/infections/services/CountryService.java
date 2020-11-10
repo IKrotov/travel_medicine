@@ -1,6 +1,7 @@
 package com.infections.services;
 
 import com.infections.model.Country;
+import com.infections.model.OtherDiseases;
 import com.infections.model.Vaccine;
 import com.infections.repos.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,13 @@ public class CountryService {
         countryRepository.save(country);
     }
 
+    public void addDiseases(int id, OtherDiseases otherDiseases){
+        Country country = countryRepository.findById(id).get();
+
+        country.addDiseases(otherDiseases);
+        countryRepository.save(country);
+    }
+
     public void deleteVaccine(int countryId, int vaccineId){
 
         Country country = countryRepository.findById(countryId).get();
@@ -46,4 +54,18 @@ public class CountryService {
         }
         countryRepository.save(country);
     }
+
+    public void deleteDiseases(int countryId, int diseasesId){
+
+        Country country = countryRepository.findById(countryId).get();
+
+        for (OtherDiseases diseases :country.getOtherDiseasesSet()){
+            if (diseases.getId() == diseasesId){
+                country.deleteDiseases(diseases);
+            }
+        }
+        countryRepository.save(country);
+    }
+
+
 }

@@ -1,9 +1,7 @@
 package com.infections.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Vaccine {
@@ -13,7 +11,9 @@ public class Vaccine {
     private long id;
 
     private String vacName;
+    @Column(length = 1024)
     private String recommendation;
+    @Column(length = 1024)
     private String transmission;
     private String url;
 
@@ -66,5 +66,22 @@ public class Vaccine {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vaccine vaccine = (Vaccine) o;
+        return id == vaccine.id &&
+                Objects.equals(vacName, vaccine.vacName) &&
+                Objects.equals(recommendation, vaccine.recommendation) &&
+                Objects.equals(transmission, vaccine.transmission) &&
+                Objects.equals(url, vaccine.url);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, vacName, recommendation, transmission, url);
     }
 }

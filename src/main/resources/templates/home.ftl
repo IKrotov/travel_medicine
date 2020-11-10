@@ -54,11 +54,11 @@
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="width: 6%">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="width: 6%">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -73,7 +73,7 @@
             <div class="card mb-3 mt-3 div-link">
                 <div class="card-body">
                     <div style="height: 75px"></div>
-                    <h2 class="card-title">Путешественникам</h2>
+                    <h1 class="card-title">Путешественникам</h1>
                     <div style="height: 75px"></div>
                     <a href="/country" class="stretched-link"></a>
                 </div>
@@ -84,7 +84,7 @@
             <div class="card mb-3 mt-3 div-link">
                 <div class="card-body">
                     <div style="height: 75px"></div>
-                    <h2 class="card-title" >Клиницистам</h2>
+                    <h1 class="card-title" >Клиницистам</h1>
                     <div style="height: 75px"></div>
                     <a href="/country" class="stretched-link"></a>
                 </div>
@@ -114,6 +114,5 @@
 
     </div>
 </div>
-
-
 </@c.page>
+

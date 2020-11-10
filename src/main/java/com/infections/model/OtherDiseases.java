@@ -15,13 +15,15 @@ public class OtherDiseases {
     private String disName;
     private String prevention;
     private String comment;
+    private String url;
 
     public OtherDiseases(){}
 
-    public OtherDiseases(String disName, String prevention, String comment) {
+    public OtherDiseases(String disName, String prevention, String comment, String url) {
         this.disName = disName;
         this.prevention = prevention;
         this.comment = comment;
+        this.url = url;
     }
 
     public int getId() {
@@ -54,5 +56,13 @@ public class OtherDiseases {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

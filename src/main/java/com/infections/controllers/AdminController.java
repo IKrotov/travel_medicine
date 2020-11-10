@@ -1,6 +1,7 @@
 package com.infections.controllers;
 
 import com.infections.model.Message;
+import com.infections.model.OtherDiseases;
 import com.infections.model.Vaccine;
 import com.infections.services.CountryService;
 import com.infections.services.MessageService;
@@ -88,14 +89,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    // !!!!!!
-    @PostMapping("admin/country")
-    public String chooseCountry(@RequestParam int countryId, Model model){
-        model.addAttribute("currentCountry", countryService.getCountry(countryId));
-
-        return "redirect:/admin#country";
-    }
-
     @PostMapping("admin/country/vaccine")
     public String addVaccineToCountry(@RequestParam int countryId,
                                       @RequestParam String vacName,
@@ -109,13 +102,34 @@ public class AdminController {
     }
 
     @PostMapping("admin/country/vaccine/{vaccineId}")
-    public String deleteVaccine(@RequestParam int countryId, @PathVariable int vaccineId){
+    public String deleteVaccine(@PathVariable int vaccineId, @RequestParam int countryId){
 
         countryService.deleteVaccine(countryId, vaccineId);
 
         return "redirect:/admin";
     }
 
+    @PostMapping("admin/country/diseases")
+    public String addDisease(@RequestParam int countryId,
+                             @RequestParam String disName,
+                             @RequestParam String prevention,
+                             @RequestParam String comment,
+                             @RequestParam String url, Model model){
+
+        OtherDiseases otherDiseases = new OtherDiseases(disName, prevention, comment, url);
+
+        countryService.addDiseases(countryId, otherDiseases);
+
+        return "redirect:/admin";
+    }
+
+    @PostMapping("admin/country/diseases/{diseasesId}")
+    public String deleteDiseases(@RequestParam int countryId, @PathVariable int diseasesId){
+
+        countryService.deleteDiseases(countryId, diseasesId);
+
+        return "redirect:/admin";
+    }
 //    @GetMapping("/admin/gt/{userId}")
 //    public String gtUser(@PathVariable("userId") Long userId, Model model){
 //        model.addAttribute("allUsers", userService.findUserById(userId));
