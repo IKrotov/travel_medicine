@@ -21,6 +21,9 @@ public class Country {
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<OtherDiseases> otherDiseasesSet;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Prevention prevention;
+
     public Country(String countryName, String flagFileName, String mapFileName) {
         this.countryName = countryName;
         this.flagFileName = flagFileName;
@@ -90,6 +93,14 @@ public class Country {
 
     public void deleteDiseases(OtherDiseases otherDiseases){
         otherDiseasesSet.remove(otherDiseases);
+    }
+
+    public Prevention getPrevention() {
+        return prevention;
+    }
+
+    public void setPrevention(Prevention prevention) {
+        this.prevention = prevention;
     }
 
     @Override

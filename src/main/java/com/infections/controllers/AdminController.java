@@ -130,9 +130,13 @@ public class AdminController {
 
         return "redirect:/admin";
     }
-//    @GetMapping("/admin/gt/{userId}")
-//    public String gtUser(@PathVariable("userId") Long userId, Model model){
-//        model.addAttribute("allUsers", userService.findUserById(userId));
-//        return "admin";
-//    }
+
+    @PostMapping("admin/country/prevention")
+    public String setPrevention(@RequestParam int countryId,
+                                @RequestParam String preventionText, Model model){
+
+        countryService.setPrevention(countryId, preventionText);
+
+        return "redirect:/admin";
+    }
 }

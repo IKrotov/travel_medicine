@@ -87,36 +87,45 @@
                 </div>
 
                 <div class="row m-6 p-6">
-                <h2>Другие заболевания</h2>
+                    <h2>Другие заболевания</h2>
 
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                        <tr>
-                            <th>Заболевание</th>
-                            <th>Профелактика</th>
-                            <th>Комментарии</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <#list country.otherDiseasesSet as diseases>
-                        <tr>
-                            <td>
-                                <#if diseases.url?has_content>
-                                    <a href="${diseases.url}">
-                                        ${diseases.disName}
-                                    </a>
-                                    <#else>
-                                        ${diseases.disName}
-                                </#if>
-                            </td>
-                            <td>${diseases.prevention}</td>
-                            <td>${diseases.comment}</td>
-                        </tr>
-                        </#list>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th>Заболевание</th>
+                                <th>Профелактика</th>
+                                <th>Комментарии</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <#list country.otherDiseasesSet as diseases>
+                            <tr>
+                                <td>
+                                    <#if diseases.url?has_content>
+                                        <a href="${diseases.url}">
+                                            ${diseases.disName}
+                                        </a>
+                                        <#else>
+                                            ${diseases.disName}
+                                    </#if>
+                                </td>
+                                <td>${diseases.prevention}</td>
+                                <td>${diseases.comment}</td>
+                            </tr>
+                            </#list>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
+                <div class="row m-6">
+                    <h2>Профилактика</h2>
+                    <#if country.prevention ??>
+                     <div>
+                         ${country.prevention.preventionText}
+                     </div>
+                    </#if>
                 </div>
             </main>
         </div>

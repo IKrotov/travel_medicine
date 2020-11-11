@@ -229,8 +229,28 @@
                                     </div>
 
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Здесь профилактика</div>
-                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Здесь артечки</div>
+                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <h3>Раздел аптечки</h3>
+                                    <div>
+                                        <form name="vaccine-form" method="post" action="admin/country/prevention" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <select class="custom-select" name="countryId" required title="Выбор страны">
+                                                    <#list allCountry as country>
+                                                        <option value="${country.id}">${country.countryName}</option>
+                                                    </#list>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="prevText"></label>
+                                                <textarea name="preventionText" class="form-control" id="prevText" rows="8"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary"> Добавить </button>
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-after-trip" role="tabpanel" aria-labelledby="v-pills-after-trip-tab">Здесь после путешествия</div>
                             </div>
                         </div>

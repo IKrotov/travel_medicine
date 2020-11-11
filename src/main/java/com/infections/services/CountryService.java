@@ -2,14 +2,19 @@ package com.infections.services;
 
 import com.infections.model.Country;
 import com.infections.model.OtherDiseases;
+import com.infections.model.Prevention;
 import com.infections.model.Vaccine;
 import com.infections.repos.CountryRepository;
+import com.sun.xml.bind.v2.runtime.unmarshaller.Patcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Service
+@Transactional
 public class CountryService {
 
     @Autowired
@@ -67,5 +72,15 @@ public class CountryService {
         countryRepository.save(country);
     }
 
+    public void setPrevention(int countryId, String preventionText){
+
+        String out = Pattern.compile("\r\n").matcher(preventionText).replaceAll("<br/>");
+
+        Country country = countryRepository.findById(countryId).get();
+
+        country.setPrevention(new Prevention(out));
+
+        countryRepository.save(country);
+    }
 
 }
