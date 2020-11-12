@@ -42,7 +42,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="layers"></span>
-                                Что то еще...
+                                После поездки
                             </a>
                         </li>
                     </ul>
@@ -147,6 +147,20 @@
                      </div>
                     </#if>
                 </div>
+
+                <div class="row m-6">
+                    <div class="m-3">
+                        <h2>После поездки</h2>
+                    </div>
+                    <#if country.health ??>
+                     <div>
+                         <p><b>Индивидуальная аптечка</b> (по рекомендациям Всемирной организации здравоохранения):</p>
+                     <#--<br/>-->
+                         ${country.health.healthText}
+                     </div>
+                    </#if>
+                </div>
+
             </main>
         </div>
     </div>

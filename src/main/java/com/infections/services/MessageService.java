@@ -11,7 +11,7 @@ import java.util.List;
 public class MessageService {
 
     @Autowired
-    MessageRepository messageRepository;
+    private MessageRepository messageRepository;
 
     public void saveMessage(Message message){
         messageRepository.save(message);
@@ -27,5 +27,9 @@ public class MessageService {
             return true;
         }
         return false;
+    }
+
+    public List<Message> getLastMessages(){
+        return messageRepository.findLast3Messages();
     }
 }

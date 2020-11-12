@@ -16,11 +16,11 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    private MessageRepository messageRepository;
+    private MessageService messageService;
 
     @GetMapping("/")
     public String homePage(Model model){
-        List<Message> messages = messageRepository.findAll();
+        List<Message> messages = messageService.getLastMessages();
         model.addAttribute("messages", messages);
         return "home";
     }

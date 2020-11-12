@@ -103,9 +103,17 @@
             <div class="card mb-4">
                 <div class="img-preview" style="background-image:url(/img/${message.fileName});">
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="height: 260px">
                     <h5 class="card-title">${message.header}</h5>
-                    <p class="card-text">${message.text} </p>
+                    <p class="card-text">
+                        <#assign minitext=(message.text!"")>
+                        <#if minitext?length &lt; 110>
+                            ${minitext}
+                        <#else>
+                            ${minitext?substring(0,109)} ...
+                        </#if>
+                        <#--${message.text} -->
+                    </p>
                     <a href="#" class="card-link">Открыть новость</a>
                 </div>
             </div>
