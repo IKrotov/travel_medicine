@@ -139,4 +139,12 @@ public class AdminController {
 
         return "redirect:/admin";
     }
+
+    @PostMapping("admin/country/health")
+    public String setHealth(@RequestParam int countryId,
+                            @RequestParam String healthText, Model model){
+        countryService.setHealth(countryId, healthText);
+
+        return "redirect:/admin";
+    }
 }

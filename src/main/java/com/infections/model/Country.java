@@ -24,6 +24,9 @@ public class Country {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Prevention prevention;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Health health;
+
     public Country(String countryName, String flagFileName, String mapFileName) {
         this.countryName = countryName;
         this.flagFileName = flagFileName;
@@ -101,6 +104,14 @@ public class Country {
 
     public void setPrevention(Prevention prevention) {
         this.prevention = prevention;
+    }
+
+    public Health getHealth() {
+        return health;
+    }
+
+    public void setHealth(Health health) {
+        this.health = health;
     }
 
     @Override

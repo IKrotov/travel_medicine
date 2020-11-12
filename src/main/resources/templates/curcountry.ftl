@@ -62,7 +62,9 @@
                 </#if>
 
                 <div class="row m-6 p-6">
-                <h2>Вакцинация</h2>
+                    <div class="m-3">
+                        <h2>Вакцинация</h2>
+                    </div>
 
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
@@ -87,7 +89,9 @@
                 </div>
 
                 <div class="row m-6 p-6">
-                    <h2>Другие заболевания</h2>
+                    <div class="m-3">
+                        <h2>Другие заболевания</h2>
+                    </div>
 
                     <div class="table-responsive">
                         <table class="table table-striped table-sm">
@@ -120,10 +124,26 @@
                 </div>
 
                 <div class="row m-6">
-                    <h2>Профилактика</h2>
+                    <div class="m-3">
+                        <h2>Профилактика</h2>
+                    </div>
                     <#if country.prevention ??>
                      <div>
+                         <p> Общие рекомендации по профилактике заболеваний во время поездки</p>
                          ${country.prevention.preventionText}
+                     </div>
+                    </#if>
+                </div>
+
+                <div class="row m-6">
+                    <div class="m-3">
+                        <h2>Аптечка</h2>
+                    </div>
+                    <#if country.health ??>
+                     <div>
+                         <p><b>Индивидуальная аптечка</b> (по рекомендациям Всемирной организации здравоохранения):</p>
+                          <#--<br/>-->
+                         ${country.health.healthText}
                      </div>
                     </#if>
                 </div>
