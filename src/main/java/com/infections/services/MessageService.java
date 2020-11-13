@@ -29,6 +29,10 @@ public class MessageService {
         return false;
     }
 
+    public Message getCurrentMessage(long id){
+        return messageRepository.findById(id);
+    }
+
     public List<Message> getLastMessages(){
         return messageRepository.findLast3Messages();
     }

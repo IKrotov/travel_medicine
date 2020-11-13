@@ -114,7 +114,10 @@
                         </#if>
                         <#--${message.text} -->
                     </p>
-                    <a href="#" class="card-link">Открыть новость</a>
+                    <#--<form name="select-message-form" method="post" action="messages/${message.id}">-->
+                        <#--<input type="submit" class="card-link" value="Открыть новость">-->
+                    <#--</form>-->
+                    <a href="/messages/${message.id}" class="card-link">Открыть новость</a>
                 </div>
             </div>
         </div>

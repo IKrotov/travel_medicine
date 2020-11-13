@@ -1,8 +1,16 @@
 .img-preview {
+     background: no-repeat center;
+     background-size: cover;
+     width: 100%;
+     height: 300px;
+     /*max-height: 300px;*/
+ }
+.img-header-full {
     background: no-repeat center;
     background-size: cover;
     width: 100%;
-    height: 300px;
+    min-height: 400px;
+    max-height: 600px;
     /*max-height: 300px;*/
 }
 .card-link-1 {
