@@ -1,21 +1,16 @@
 package com.infections.controllers;
 
-import com.infections.model.Message;
 import com.infections.model.OtherDiseases;
 import com.infections.model.Vaccine;
 import com.infections.services.CountryService;
 import com.infections.services.MessageService;
 import com.infections.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")
@@ -27,9 +22,6 @@ public class AdminController {
     private MessageService messageService;
     @Autowired
     private CountryService countryService;
-
-    @Value("${upload.path}")
-    private String uploadPath;
 
     @GetMapping
     public String getAllEntities(Model model){
@@ -64,28 +56,9 @@ public class AdminController {
     @PostMapping("/addMessage")
     public String addMessage(@RequestParam String text,
                              @RequestParam String header,
-                             @RequestParam("file") MultipartFile file) throws IOException {
+                             @RequestParam("file") MultipartFile file){
 
-
-        Message message = new Message(text, header);
-
-        if (file != null){
-
-            File uploadDir = new File(uploadPath);
-
-            if (!uploadDir.exists()){
-                uploadDir.mkdir();
-            }
-
-            String uuidFile = UUID.randomUUID().toString();
-            String resultFileName = uuidFile + "." + file.getOriginalFilename();
-
-            file.transferTo(new File(uploadPath + "/" + resultFileName));
-
-            message.setFileName(resultFileName);
-
-        }
-        messageService.saveMessage(message);
+        messageService.addMessage(header, text, file);
 
         return "redirect:/admin";
     }
