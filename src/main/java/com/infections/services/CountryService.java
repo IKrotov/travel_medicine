@@ -86,6 +86,14 @@ public class CountryService {
        countryRepository.save(country);
     }
 
+    public void setAfterTrip(int countryId, String afterTripText){
+        Country country = countryRepository.findById(countryId).get();
+
+        country.setAfterTheTrip(new AfterTheTrip(replaceBreak(afterTripText)));
+
+        countryRepository.save(country);
+    }
+
 
     private String replaceBreak(String text){
         return Pattern.compile("\r\n").matcher(text).replaceAll("<br/>");

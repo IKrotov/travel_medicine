@@ -152,11 +152,10 @@
                     <div class="m-3">
                         <h2>После поездки</h2>
                     </div>
-                    <#if country.health ??>
+                    <#if country.afterTheTrip ??>
                      <div>
-                         <p><b>Индивидуальная аптечка</b> (по рекомендациям Всемирной организации здравоохранения):</p>
-                     <#--<br/>-->
-                         ${country.health.healthText}
+                         <p>Консультирование возвращующихся путешественников</p>
+                         ${country.afterTheTrip.afterTripText}
                      </div>
                     </#if>
                 </div>

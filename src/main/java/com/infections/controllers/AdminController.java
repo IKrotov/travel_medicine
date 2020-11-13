@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
@@ -30,7 +31,7 @@ public class AdminController {
     @Value("${upload.path}")
     private String uploadPath;
 
-    @GetMapping("/admin")
+    @GetMapping
     public String getAllEntities(Model model){
         model.addAttribute("allUsers", userService.findAllUsers());
         model.addAttribute("messages", messageService.getAllMessages());
@@ -38,7 +39,7 @@ public class AdminController {
         return "admin";
     }
 
-    @PostMapping("/admin")
+    @PostMapping
     public String deleteUser(@RequestParam(required = true, defaultValue = "") Long userId,
                              @RequestParam(required = true, defaultValue = "") String action,
                              Model model){
@@ -50,7 +51,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("/admin/deleteMsg")
+    @PostMapping("/deleteMsg")
     public String deleteMessage(@RequestParam(required = true, defaultValue = "") Long messageId,
                                 @RequestParam(required = true, defaultValue = "") String action,
                                 Model model){
@@ -60,7 +61,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("admin/addMessage")
+    @PostMapping("/addMessage")
     public String addMessage(@RequestParam String text,
                              @RequestParam String header,
                              @RequestParam("file") MultipartFile file) throws IOException {
@@ -89,7 +90,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("admin/country/vaccine")
+    @PostMapping("/country/vaccine")
     public String addVaccineToCountry(@RequestParam int countryId,
                                       @RequestParam String vacName,
                                       @RequestParam String recommendation,
@@ -101,7 +102,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("admin/country/vaccine/{vaccineId}")
+    @PostMapping("country/vaccine/{vaccineId}")
     public String deleteVaccine(@PathVariable int vaccineId, @RequestParam int countryId){
 
         countryService.deleteVaccine(countryId, vaccineId);
@@ -109,7 +110,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("admin/country/diseases")
+    @PostMapping("country/diseases")
     public String addDisease(@RequestParam int countryId,
                              @RequestParam String disName,
                              @RequestParam String prevention,
@@ -123,7 +124,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("admin/country/diseases/{diseasesId}")
+    @PostMapping("country/diseases/{diseasesId}")
     public String deleteDiseases(@RequestParam int countryId, @PathVariable int diseasesId){
 
         countryService.deleteDiseases(countryId, diseasesId);
@@ -131,7 +132,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("admin/country/prevention")
+    @PostMapping("country/prevention")
     public String setPrevention(@RequestParam int countryId,
                                 @RequestParam String preventionText, Model model){
 
@@ -140,10 +141,18 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("admin/country/health")
+    @PostMapping("country/health")
     public String setHealth(@RequestParam int countryId,
                             @RequestParam String healthText, Model model){
         countryService.setHealth(countryId, healthText);
+
+        return "redirect:/admin";
+    }
+
+    @PostMapping("country/afterTrip")
+    public String setAfterTrip(@RequestParam int countryId,
+                               @RequestParam String afterTripText, Model model){
+        countryService.setAfterTrip(countryId, afterTripText);
 
         return "redirect:/admin";
     }

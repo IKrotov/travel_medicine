@@ -27,6 +27,9 @@ public class Country {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Health health;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private AfterTheTrip afterTheTrip;
+
     public Country(String countryName, String flagFileName, String mapFileName) {
         this.countryName = countryName;
         this.flagFileName = flagFileName;
@@ -112,6 +115,14 @@ public class Country {
 
     public void setHealth(Health health) {
         this.health = health;
+    }
+
+    public AfterTheTrip getAfterTheTrip() {
+        return afterTheTrip;
+    }
+
+    public void setAfterTheTrip(AfterTheTrip afterTheTrip) {
+        this.afterTheTrip = afterTheTrip;
     }
 
     @Override
