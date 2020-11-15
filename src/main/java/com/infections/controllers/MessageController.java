@@ -21,5 +21,12 @@ public class MessageController {
         return "message";
     }
 
+    @GetMapping("/messages")
+    public String getAllMessages(Model model){
+        model.addAttribute("messages", messageService.getAllMessages());
+
+        return "messages";
+    }
+
 
 }

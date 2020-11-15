@@ -15,7 +15,7 @@
                 <a class="nav-item nav-link" href="/country">Страны<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-item nav-link" href="#">Новости</a>
+                <a class="nav-item nav-link" href="/messages">Новости</a>
             </li>
             <li class="nav-item">
                 <a class="nav-item nav-link" href="#">Вопрос ответ</a>
