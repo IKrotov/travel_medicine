@@ -16,31 +16,31 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="#vaccine">
                                 <span data-feather="file"></span>
                                 Вакцинация
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="#diseases">
                                 <span data-feather="shopping-cart"></span>
                                 Заболевания
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="#prevention">
                                 <span data-feather="users"></span>
                                 Профилактика
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="#health">
                                 <span data-feather="bar-chart-2"></span>
                                 Аптечка
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="#after-trip">
                                 <span data-feather="layers"></span>
                                 После поездки
                             </a>
@@ -61,48 +61,52 @@
                      </div>
                 </#if>
 
-                <div class="row m-6 p-6">
-                    <div class="m-3">
-                        <h2>Вакцинация</h2>
-                    </div>
+                <section id="vaccine">
 
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                        <tr>
-                            <th>Название</th>
-                            <th>Рекомендовано</th>
-                            <th>Пути передачи</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <div class="row m-6 p-6">
+                        <div class="m-3">
+                            <h2>Вакцинация</h2>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm">
+                                <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Рекомендовано</th>
+                                    <th>Пути передачи</th>
+                                </tr>
+                                </thead>
+                                <tbody>
                         <#list country.vaccines as vaccine>
-                            <tr>
-                                <td><a href="${vaccine.url}">${vaccine.vacName}</a></td>
-                                <td>${vaccine.recommendation}</td>
-                                <td>${vaccine.transmission}</td>
-                            </tr>
+                        <tr>
+                            <td><a href="${vaccine.url}">${vaccine.vacName}</a></td>
+                            <td>${vaccine.recommendation}</td>
+                            <td>${vaccine.transmission}</td>
+                        </tr>
                         </#list>
-                        </tbody>
-                    </table>
-                </div>
-                </div>
-
-                <div class="row m-6 p-6">
-                    <div class="m-3">
-                        <h2>Другие заболевания</h2>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                </section>
 
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                            <tr>
-                                <th>Заболевание</th>
-                                <th>Профелактика</th>
-                                <th>Комментарии</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                <section id="diseases">
+                    <div class="row m-6 p-6">
+                        <div class="m-3">
+                            <h2>Другие заболевания</h2>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm">
+                                <thead>
+                                <tr>
+                                    <th>Заболевание</th>
+                                    <th>Профелактика</th>
+                                    <th>Комментарии</th>
+                                </tr>
+                                </thead>
+                                <tbody>
                             <#list country.otherDiseasesSet as diseases>
                             <tr>
                                 <td>
@@ -110,55 +114,63 @@
                                         <a href="${diseases.url}">
                                             ${diseases.disName}
                                         </a>
-                                        <#else>
-                                            ${diseases.disName}
+                                    <#else>
+                                        ${diseases.disName}
                                     </#if>
                                 </td>
                                 <td>${diseases.prevention}</td>
                                 <td>${diseases.comment}</td>
                             </tr>
                             </#list>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </section>
 
-                <div class="row m-6">
-                    <div class="m-3">
-                        <h2>Профилактика</h2>
-                    </div>
+                <section id="prevention">
+                    <div class="row m-6">
+                        <div class="m-3">
+                            <h2>Профилактика</h2>
+                        </div>
                     <#if country.prevention ??>
                      <div>
                          <p> Общие рекомендации по профилактике заболеваний во время поездки</p>
                          ${country.prevention.preventionText}
                      </div>
                     </#if>
-                </div>
-
-                <div class="row m-6">
-                    <div class="m-3">
-                        <h2>Аптечка</h2>
                     </div>
+                </section>
+
+                <section id="health">
+                    <div class="row m-6">
+                        <div class="m-3">
+                            <h2>Аптечка</h2>
+                        </div>
                     <#if country.health ??>
                      <div>
                          <p><b>Индивидуальная аптечка</b> (по рекомендациям Всемирной организации здравоохранения):</p>
-                          <#--<br/>-->
+                     <#--<br/>-->
                          ${country.health.healthText}
                      </div>
                     </#if>
-                </div>
-
-                <div class="row m-6">
-                    <div class="m-3">
-                        <h2>После поездки</h2>
                     </div>
+                </section>
+
+
+                <section id="after-trip">
+                    <div class="row m-6">
+                        <div class="m-3">
+                            <h2>После поездки</h2>
+                        </div>
                     <#if country.afterTheTrip ??>
                      <div>
                          <p>Консультирование возвращующихся путешественников</p>
                          ${country.afterTheTrip.afterTripText}
                      </div>
                     </#if>
-                </div>
+                    </div>
+                </section>
 
             </main>
         </div>

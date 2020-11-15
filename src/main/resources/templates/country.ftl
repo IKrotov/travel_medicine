@@ -36,7 +36,7 @@
                     <div class="img-preview" style="background-image:url(/img/${country.flagFileName});">
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">${country.countryName}</h3>
+                        <h2 class="card-title">${country.countryName}</h2>
                         <a href="/country/${country.id}" class="stretched-link"></a>
                     </div>
                 </div>
