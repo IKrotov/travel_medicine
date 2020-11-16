@@ -25,13 +25,4 @@ public class HomeController {
         return "home";
     }
 
-//    @PostMapping("/addUser")
-//    public String addMessage(@RequestParam String text, @RequestParam String tag, Model model){
-//
-//        Message message = new Message(text, tag);
-//        messageRepository.save(message);
-//        model.addAttribute("messages", messageRepository.findAll());
-//        return "messages";
-//    }
-
 }

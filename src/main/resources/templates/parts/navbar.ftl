@@ -20,6 +20,11 @@
             <li class="nav-item">
                 <a class="nav-item nav-link" href="#">Вопрос ответ</a>
             </li>
+            <#if user??>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="/profile">Профиль</a>
+                </li>
+            </#if>
             <#if isAdmin>
                 <li class="nav-item">
                     <a class="nav-item nav-link" href="/admin">Панель администратора</a>

@@ -24,7 +24,7 @@
         <!--/Footer Links-->
         <!--Copyright-->
         <div class="bg-primary py-3 text-center text-white">
-            &copy;&nbsp;2020 WebBullet
+            &copy;&nbsp;2020 Aleksandr Krotov
             <!-- <a href="#" class="text-white">WebBullet</a> -->
         </div>
         <!--/Copyright-->
