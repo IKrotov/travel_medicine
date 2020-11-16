@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -38,5 +39,20 @@ public class RegistrationController {
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping("/active/{code}")
+    public String activate(Model model, @PathVariable String code){
+
+        boolean isActivated = userService.activateUser(code);
+
+        if (isActivated){
+            model.addAttribute("message", "Аккаунт активирован");
+
+        } else {
+            model.addAttribute("message", "Ошибка активации");
+        }
+
+        return "activepage";
     }
 }

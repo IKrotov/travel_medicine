@@ -112,11 +112,7 @@
                         <#else>
                             ${minitext?substring(0,109)} ...
                         </#if>
-                        <#--${message.text} -->
                     </p>
-                    <#--<form name="select-message-form" method="post" action="messages/${message.id}">-->
-                        <#--<input type="submit" class="card-link" value="Открыть новость">-->
-                    <#--</form>-->
                     <a href="/messages/${message.id}" class="card-link">Открыть новость</a>
                 </div>
             </div>

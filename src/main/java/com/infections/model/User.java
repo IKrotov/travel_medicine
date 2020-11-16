@@ -18,6 +18,8 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private String email;
+    private boolean active;
+    private String activationCode;
     @Transient
     private String passwordConfirm;
 
@@ -124,5 +126,21 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 }
