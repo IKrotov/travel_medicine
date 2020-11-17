@@ -2,7 +2,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-primary bg-light">
     <a class="navbar-brand" href="/">
-        <#--<img src="/img/rnimu_logo.png" alt="" style="max-height: 100px; max-width: 100px">-->
         <img src="/img/double_logo.png" alt="" style="max-height: 200px; max-width: 200px">
         СНК "Медицина путешествий"
     </a>

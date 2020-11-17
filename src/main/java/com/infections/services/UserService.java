@@ -68,12 +68,6 @@ public class UserService implements UserDetailsService {
 
         if (!StringUtils.isEmpty(user.getEmail())){
 
-//            String message = String.format("Здравсвуйте, %s! \n" +
-//                    "Добро пожаловать! Подтвердите ваш email для завершения регистрации, перейдя по ссылке : http://localhost:8080/active/%s",
-//                    user.getUsername(),
-//                    user.getActivationCode()
-//            );
-
            String message = String.format("Здравствуйте, %s! \n" +
                     "Спасибо за регистрацию! Пожалуйста, подтвердите ваш Email адрес для завершения регистрации. Для этого перейдите по ссылке : http://localhost:8080/active/%s",
                     user.getUsername(),
@@ -120,6 +114,46 @@ public class UserService implements UserDetailsService {
 
         userRepository.save(user);
 
+        return true;
+    }
+
+    public boolean changePassword(long userId, String password) {
+
+       User user = userRepository.findById(userId).orElse(null);
+       if (user == null) {
+           return false;
+       }
+       user.setPassword(bCryptPasswordEncoder.encode(password));
+       userRepository.save(user);
+       return true;
+    }
+
+    public boolean changeUsername(long userId, String username) {
+
+        if (userRepository.findByUsername(username) != null){
+            return false;
+        }
+
+        User user = userRepository.findById(userId).orElse(null);
+        if (user == null) {
+            return false;
+        }
+        user.setUsername(username);
+        userRepository.save(user);
+        return true;
+    }
+
+    public boolean changeEmail(long userId, String email) {
+        if (userRepository.findByEmail(email) != null){
+            return false;
+        }
+
+        User user = userRepository.findById(userId).orElse(null);
+        if (user == null) {
+            return false;
+        }
+        user.setUsername(email);
+        userRepository.save(user);
         return true;
     }
 }
