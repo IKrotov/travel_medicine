@@ -94,9 +94,18 @@ public class CountryService {
         countryRepository.save(country);
     }
 
+    public void setListOfReferencesText(int countryId, String listOfReferencesText) {
+        Country country = countryRepository.findById(countryId).get();
+
+        country.setAfterTheTrip(new AfterTheTrip(replaceBreak(listOfReferencesText)));
+
+        countryRepository.save(country);
+    }
+
 
     private String replaceBreak(String text){
         return Pattern.compile("\r\n").matcher(text).replaceAll("<br/>");
     }
+
 
 }

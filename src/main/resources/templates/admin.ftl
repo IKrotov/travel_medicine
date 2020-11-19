@@ -83,6 +83,7 @@
                                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Профилактика</a>
                                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Аптечка</a>
                                 <a class="nav-link" id="v-pills-settings-after-trip" data-toggle="pill" href="#v-pills-after-trip" role="tab" aria-controls="v-pills-after-trip" aria-selected="false">После поездки</a>
+                                <a class="nav-link" id="v-pills-settings-ref-list" data-toggle="pill" href="#v-pills-ref-list" role="tab" aria-controls="v-pills-ref-list" aria-selected="false">Список источников</a>
                             </div>
                         </div>
                         <div class="col-9">
@@ -101,6 +102,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-after-trip" role="tabpanel" aria-labelledby="v-pills-after-trip-tab">
                                     <#include "parts/country/afterTrip.ftl">
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-ref-list" role="tabpanel" aria-labelledby="v-pills-ref-list-tab">
+                                    <#include "parts/country/refList.ftl">
                                 </div>
                             </div>
                         </div>

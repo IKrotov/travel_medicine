@@ -30,6 +30,9 @@ public class Country {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private AfterTheTrip afterTheTrip;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private ListOfReferences listOfReferences;
+
     public Country(String countryName, String flagFileName, String mapFileName) {
         this.countryName = countryName;
         this.flagFileName = flagFileName;
@@ -123,6 +126,14 @@ public class Country {
 
     public void setAfterTheTrip(AfterTheTrip afterTheTrip) {
         this.afterTheTrip = afterTheTrip;
+    }
+
+    public ListOfReferences getListOfReferences() {
+        return listOfReferences;
+    }
+
+    public void setListOfReferences(ListOfReferences listOfReferences) {
+        this.listOfReferences = listOfReferences;
     }
 
     @Override

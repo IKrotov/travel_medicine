@@ -45,6 +45,12 @@
                                 После поездки
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#ref-list">
+                                <span data-feather="layers"></span>
+                                Список источников
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -167,6 +173,19 @@
                      <div>
                          <p>Консультирование возвращующихся путешественников</p>
                          ${country.afterTheTrip.afterTripText}
+                     </div>
+                    </#if>
+                    </div>
+                </section>
+
+                <section id="ref-list">
+                    <div class="row m-6">
+                        <div class="m-3">
+                            <h2>Список источников</h2>
+                        </div>
+                    <#if country.listOfReferences ??>
+                     <div>
+                         ${country.listOfReferences.listOfReferencesText}
                      </div>
                     </#if>
                     </div>

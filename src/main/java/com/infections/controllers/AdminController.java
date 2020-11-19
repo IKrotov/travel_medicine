@@ -129,4 +129,13 @@ public class AdminController {
 
         return "redirect:/admin";
     }
+
+    @PostMapping("country/refList")
+    public String setRefList(@RequestParam int countryId,
+                             @RequestParam String listOfReferencesText, Model model){
+
+        countryService.setListOfReferencesText(countryId, listOfReferencesText);
+
+        return "redirect:/admin";
+    }
 }
