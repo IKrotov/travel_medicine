@@ -2,7 +2,6 @@ package com.infections.services;
 
 import com.infections.model.Role;
 import com.infections.model.User;
-import com.infections.repos.RoleRepository;
 import com.infections.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,8 +26,6 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
@@ -60,7 +57,7 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+        user.setRoles(Collections.singleton(Role.USER));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActivationCode(UUID.randomUUID().toString());
 

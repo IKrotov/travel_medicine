@@ -29,10 +29,12 @@
             <div>
                 <img class="avatar" src="/img/unknown_avatar.png">
             </div>
+            <div class="p-2">
+                <p>Имя: ${name}</p>
+                <p><span>Email: ${email}</span></p>
+                <p>Статус: </p>
+            </div>
 
-            <p>Имя: ${name}</p>
-            <p><span>Email: ${email}</span></p>
-            <p>Статус: </p>
         </div>
 
         <div class="col-8">

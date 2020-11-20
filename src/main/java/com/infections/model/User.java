@@ -23,7 +23,9 @@ public class User implements UserDetails {
     @Transient
     private String passwordConfirm;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
     public User(){
@@ -49,22 +51,13 @@ public class User implements UserDetails {
     }
 
     public boolean isAdmin(){
-        for (Role role: roles){
-            if (role.getName().equals("ROLE_ADMIN")) {
-                return true;
-            }
-        }
-        return false;
+        return roles.contains(Role.ADMIN);
     }
     public void addAdminRole(){
-        roles.add(new Role(2L, "ROLE_ADMIN"));
+        roles.add(Role.ADMIN);
     }
     public void deleteAdminRole(){
-        for (Role role: roles){
-            if (role.getName().equals("ROLE_ADMIN")){
-                roles.remove(role);
-            }
-        }
+        roles.remove(Role.ADMIN);
     }
 
     @Override
