@@ -39,7 +39,11 @@ public class Country {
         this.mapFileName = mapFileName;
     }
 
-    public Country(){};
+    public Country(String countryName){
+        this.countryName = countryName;
+    }
+
+    public Country(){}
 
     public int getId() {
         return id;

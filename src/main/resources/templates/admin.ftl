@@ -84,6 +84,10 @@
                                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Аптечка</a>
                                 <a class="nav-link" id="v-pills-settings-after-trip" data-toggle="pill" href="#v-pills-after-trip" role="tab" aria-controls="v-pills-after-trip" aria-selected="false">После поездки</a>
                                 <a class="nav-link" id="v-pills-settings-ref-list" data-toggle="pill" href="#v-pills-ref-list" role="tab" aria-controls="v-pills-ref-list" aria-selected="false">Список источников</a>
+
+                                <hr class="featurette-divider">
+
+                                <a class="nav-link" id="v-pills-settings-add-country" data-toggle="pill" href="#v-pills-add-country" role="tab" aria-controls="v-pills-add-country" aria-selected="false">Добавить страну</a>
                             </div>
                         </div>
                         <div class="col-9">
@@ -105,6 +109,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-ref-list" role="tabpanel" aria-labelledby="v-pills-ref-list-tab">
                                     <#include "parts/country/refList.ftl">
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-add-country" role="tabpanel" aria-labelledby="v-pills-ref-add-country">
+                                    <#include "parts/country/countryController.ftl">
                                 </div>
                             </div>
                         </div>
@@ -132,7 +139,7 @@
                         <td>
                             <#list user.roles as role>
                                 <div>
-                                    <p>${role.name}</p>
+                                    <p>${role}</p>
                                 </div>
                             </#list>
                         </td>

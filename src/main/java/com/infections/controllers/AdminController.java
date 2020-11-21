@@ -138,4 +138,22 @@ public class AdminController {
 
         return "redirect:/admin";
     }
+
+    @PostMapping("addCountry")
+    public String addCountry(@RequestParam String countryName,
+                             @RequestParam("flagFileName") MultipartFile flagFileName,
+                             @RequestParam("mapFileName") MultipartFile mapFileName){
+
+        countryService.addCountry(countryName, flagFileName, mapFileName);
+
+        return "redirect:/admin";
+    }
+
+    @PostMapping("deleteCountry")
+    public String deleteCountry(@RequestParam int countryId){
+
+        countryService.deleteCountry(countryId);
+
+        return "redirect:/admin";
+    }
 }
