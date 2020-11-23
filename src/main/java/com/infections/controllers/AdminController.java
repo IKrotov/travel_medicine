@@ -1,5 +1,6 @@
 package com.infections.controllers;
 
+import com.infections.model.Message;
 import com.infections.model.OtherDiseases;
 import com.infections.model.Vaccine;
 import com.infections.services.CountryService;
@@ -8,8 +9,16 @@ import com.infections.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.Valid;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/admin")
@@ -54,13 +63,29 @@ public class AdminController {
     }
 
     @PostMapping("/addMessage")
-    public String addMessage(@RequestParam String text,
-                             @RequestParam String header,
+    public String addMessage(@Valid Message message,
+                             BindingResult bindingResult,
+                             Model model,
                              @RequestParam("file") MultipartFile file){
 
-        messageService.addMessage(header, text, file);
+        if (bindingResult.hasErrors()){
 
-        return "redirect:/admin";
+            Map<String, String> errorsMap = ControllerUtils.getBindingErrorsMap(bindingResult);
+
+            model.mergeAttributes(errorsMap);
+            model.addAttribute("inputMessage", message);
+
+        } else {
+            messageService.addMessage(message, file);
+
+            model.addAttribute("inputMessage", null);
+        }
+
+        model.addAttribute("allUsers", userService.findAllUsers());
+        model.addAttribute("messages", messageService.getAllMessages());
+        model.addAttribute("allCountry", countryService.getAllCountry());
+
+        return "admin";
     }
 
     @PostMapping("/country/vaccine")

@@ -1,6 +1,8 @@
 package com.infections.model;
 
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String text;
+    @Length(max = 255, message = "Длинна заголовка не должна превышать 255 сиволов")
     private String header;
     private String fileName;
 

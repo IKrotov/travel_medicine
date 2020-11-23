@@ -26,7 +26,13 @@
                             <form name="message-form" method="post" action="/admin/addMessage" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="header">Заголовок новости</label>
-                                    <textarea name="header" class="form-control" id="header" rows="1"></textarea>
+                                    <textarea name="header" class="form-control ${(headerError??)?string('is-invalid', '')}"
+                                              id="header" rows="1"> <#if inputMessage??> "${inputMessage.header}"</#if></textarea>
+                                    <#if headerError??>
+                                        <div class="invalid-feedback">
+                                            ${headerError}
+                                        </div>
+                                    </#if>
                                 </div>
                                 <div class="form-group">
                                     <label for="text">Текст новости</label>

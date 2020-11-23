@@ -1,9 +1,15 @@
 package com.infections.model;
 
+
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.Set;
 
@@ -15,12 +21,19 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+
+    @NotBlank(message = "Имя не может быть пустым")
+    @Length(max = 20, message = "Длинна имени пользователя должна быть не более 20 символов")
     private String username;
+//    @Length(min = 6, max = 20, message = "Длинна пароля  должна быть от 6 до 20 символов")
     private String password;
+    @NotBlank(message = "Email не может быть пустым")
+    @Email(message = "Некорректный Email")
     private String email;
     private boolean active;
     private String activationCode;
     @Transient
+    @NotBlank(message = "Пароль не может быть пустым")
     private String passwordConfirm;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -28,15 +41,15 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    public User(){
-
-    }
-
-    public User(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
+//    public User(){
+//
+//    }
+//
+//    public User(String username, String password, String email) {
+//        this.username = username;
+//        this.password = password;
+//        this.email = email;
+//    }
 
     public long getId() {
         return id;
@@ -136,4 +149,6 @@ public class User implements UserDetails {
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
     }
+
+
 }

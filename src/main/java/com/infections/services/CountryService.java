@@ -139,7 +139,7 @@ public class CountryService {
             String resultFileName = getFullFileName(mapFileName);
 
             try {
-                flagFileName.transferTo(new File(uploadPath + "/" + resultFileName));
+                mapFileName.transferTo(new File(uploadPath + "/" + resultFileName));
             } catch (IOException e) {
                 e.printStackTrace();
             }

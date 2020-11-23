@@ -29,9 +29,7 @@ public class MessageService {
         return messageRepository.findAll();
     }
 
-    public void addMessage(String title, String text, MultipartFile file){
-
-        Message message = new Message(text, title);
+    public void addMessage(Message message, MultipartFile file){
 
         if (file != null && !file.getOriginalFilename().isEmpty()){
 

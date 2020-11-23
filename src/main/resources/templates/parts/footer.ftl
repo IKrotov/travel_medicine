@@ -8,13 +8,11 @@
                 <div class="py-5">
                     <div>
                         <!--Facebook-->
-                        <a href="#" class="vk-ic footer-ic"><i class="fab fa-vk fa-lg mx-4 fa-2x"></i></a>
-                        <!--Twitter-->
-                        <a href="#" class="tw-ic footer-ic"><i class="fab fa-twitter fa-lg mx-4 fa-2x"></i></a>
-                        <!--Linkedin-->
-                        <a href="#" class="li-ic footer-ic"><i class="fab fa-linkedin fa-lg mx-4 fa-2x"></i></a>
+                        <a href="https://vk.com/travelmedicine" class="vk-ic footer-ic"><i class="fab fa-vk fa-lg mx-4 fa-2x"></i></a>
+                        <!--FaceBook-->
+                        <a href="#" class="fb-ic footer-ic"><i class="fab fa-facebook-square fa-lg mx-4 fa-2x"></i></a>
                         <!--Instagram-->
-                        <a href="#" class="ins-ic footer-ic"><i class="fab fa-instagram fa-lg mx-4 fa-2x"></i></a>
+                        <a href="https://www.instagram.com/ssc_travel_medicine/?igshid=1xsuy20luh5a0" class="ins-ic footer-ic"><i class="fab fa-instagram fa-lg mx-4 fa-2x"></i></a>
                     </div>
                 </div>
                 <!--/First column-->
@@ -24,8 +22,8 @@
         <!--/Footer Links-->
         <!--Copyright-->
         <div class="bg-primary py-3 text-center text-white">
-            &copy;&nbsp;2020 Aleksandr Krotov
-            <!-- <a href="#" class="text-white">WebBullet</a> -->
+            &copy;&nbsp;2020
+             <a href="https://rsmu.ru" class="text-white">rsmu</a>
         </div>
         <!--/Copyright-->
     </footer>

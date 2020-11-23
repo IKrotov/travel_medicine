@@ -1,66 +1,62 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
-<#--<!DOCTYPE html>-->
-<#--<html>-->
-<#--<head>-->
-    <#--<meta charset="utf-8">-->
-    <#--<title>Регистрация</title>-->
-    <#--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">-->
-    <#--<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>-->
-    <#--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
-<#--</head>-->
-
-<#--<body>-->
 
 <div>
     <form class="form-horizontal" action='/registration' method="POST">
-        <fieldset>
-            <div id="legend">
-                <legend class="">Register</legend>
-            </div>
-            <div class="control-group">
-                <!-- Username -->
-                <label class="control-label"  for="username">Username</label>
-                <div class="controls">
-                    <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
-                    <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">User Name :</label>
+            <div class="col-sm-6">
+                <input type="text" name="username" value="<#if user??>${user.username}</#if>"
+                       class="form-control ${(usernameError??)?string('is-invalid', '')}"
+                       placeholder="User name" />
+            <#if usernameError??>
+                <div class="invalid-feedback">
+                    ${usernameError}
                 </div>
+            </#if>
             </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Password:</label>
+            <div class="col-sm-6">
+                <input type="password" name="password"
+                       class="form-control ${(passwordError??)?string('is-invalid', '')}"
+                       placeholder="Password" />
+            <#if passwordError??>
+                <div class="invalid-feedback">
+                    ${passwordError}
+                </div>
+            </#if>
+            </div>
+        </div>
 
-            <div class="control-group">
-                <!-- E-mail -->
-                <label class="control-label" for="email">E-mail</label>
-                <div class="controls">
-                    <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
-                    <p class="help-block">Please provide your E-mail</p>
-                </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Confirm password:</label>
+            <div class="col-sm-6">
+                <input type="password" name="passwordConfirm"
+                       class="form-control ${(passwordConfirmError??)?string('is-invalid', '')}"
+                       placeholder="Retype password" />
+                <#if passwordConfirmError??>
+                    <div class="invalid-feedback">
+                        ${passwordConfirmError}
+                    </div>
+                </#if>
             </div>
-
-            <div class="control-group">
-                <!-- Password-->
-                <label class="control-label" for="password">Password</label>
-                <div class="controls">
-                    <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
-                    <p class="help-block">Password should be at least 4 characters</p>
-                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Email:</label>
+            <div class="col-sm-6">
+                <input type="email" name="email" value="<#if user??>${user.email}</#if>"
+                       class="form-control ${(emailError??)?string('is-invalid', '')}"
+                       placeholder="some@some.com" />
+                <#if emailError??>
+                    <div class="invalid-feedback">
+                        ${emailError}
+                    </div>
+                </#if>
             </div>
-
-            <div class="control-group">
-                <!-- Password -->
-                <label class="control-label"  for="password_confirm">Password (Confirm)</label>
-                <div class="controls">
-                    <input type="password" id="password_confirm" name="passwordConfirm" placeholder="" class="input-xlarge">
-                    <p class="help-block">Please confirm password</p>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <!-- Button -->
-                <div class="controls">
-                    <button class="btn btn-success">Register</button>
-                </div>
-            </div>
-        </fieldset>
+        </div>
+        <button type="submit" class="btn btn-success"> Добавить</button>
     </form>
 </div>
 </@c.page>
