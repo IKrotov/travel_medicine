@@ -58,18 +58,22 @@
                 <div class="tab-pane fade show active" id="pills-name" role="tabpanel" aria-labelledby="pills-name-tab">
                     <h3 class="title">Изменить имя пользователя</h3>
                     <form class="form-horizontal" action='/profile/changeUsername' method="POST">
-                            <div class="control-group">
-                                <!-- Username -->
-                                <label class="control-label"  for="username">Введите новое имя пользователя</label>
-                                <div class="controls">
-                                    <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
-                                    <input type="hidden" name="userId" value="${userId}">
-                                    <p class="help-block">Имя должно содеражать то-то то-то</p>
-                                </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">User Name: </label>
+                            <div class="col-sm-6">
+                                <input type="text" name="username" value="<#if user??>${user.username}</#if>"
+                                       class="form-control ${(usernameError??)?string('is-invalid', '')}"
+                                       placeholder="User name" />
+                                <input type="hidden" name="userId" value="${userId}">
+                                <#if usernameError??>
+                                    <div class="invalid-feedback">
+                                        ${usernameError}
+                                    </div>
+                                </#if>
                             </div>
+                        </div>
 
                         <div class="control-group">
-                            <!-- Button -->
                             <div class="controls">
                                 <button class="btn btn-success">Применить</button>
                             </div>
@@ -79,18 +83,22 @@
                 <div class="tab-pane fade" id="pills-email" role="tabpanel" aria-labelledby="pills-email-tab">
                     <h3 class="title">Изменить Email</h3>
                     <form class="form-horizontal" action='/profile/changeEmail' method="POST">
-                        <div class="control-group">
-                            <!-- E-mail -->
-                            <label class="control-label" for="email">E-mail</label>
-                            <div class="controls">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Email:</label>
+                            <div class="col-sm-6">
+                                <input type="email" name="email" value="<#if user??>${user.email}</#if>"
+                                       class="form-control ${(emailError??)?string('is-invalid', '')}"
+                                       placeholder="some@some.com"/>
                                 <input type="hidden" name="userId" value="${userId}">
-                                <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
-                                <p class="help-block">Введите новый Email</p>
+                                <#if emailError??>
+                                    <div class="invalid-feedback">
+                                        ${emailError}
+                                    </div>
+                                </#if>
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <!-- Button -->
                             <div class="controls">
                                 <button class="btn btn-success">Применить</button>
                             </div>
@@ -101,22 +109,32 @@
                     <h3 class="title">Изменить пароль</h3>
                     <form action="/profile/changePassword" method="post">
 
-                        <div class="control-group">
-                            <!-- Password-->
-                            <label class="control-label" for="password">Введите новый пароль</label>
-                            <div class="controls">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Password:</label>
+                            <div class="col-sm-6">
+                                <input type="password" name="password"
+                                       class="form-control ${(passwordError??)?string('is-invalid', '')}"
+                                       placeholder="Password" />
                                 <input type="hidden" name="userId" value="${userId}">
-                                <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
-                                <p class="help-block">Пароль должен быть такой-то...</p>
+                                <#if passwordError??>
+                                    <div class="invalid-feedback">
+                                        ${passwordError}
+                                    </div>
+                                </#if>
                             </div>
                         </div>
 
-                        <div class="control-group">
-                            <!-- Password -->
-                            <label class="control-label"  for="password_confirm">Подтвердите пароль</label>
-                            <div class="controls">
-                                <input type="password" id="password_confirm" name="passwordConfirm" placeholder="" class="input-xlarge">
-                                <p class="help-block">Пароли должны совпадать</p>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Confirm password:</label>
+                            <div class="col-sm-6">
+                                <input type="password" name="passwordConfirm"
+                                       class="form-control ${(passwordConfirmError??)?string('is-invalid', '')}"
+                                       placeholder="Retype password" />
+                                <#if passwordConfirmError??>
+                                    <div class="invalid-feedback">
+                                        ${passwordConfirmError}
+                                    </div>
+                                </#if>
                             </div>
                         </div>
 

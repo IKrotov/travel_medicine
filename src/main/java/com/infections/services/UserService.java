@@ -150,7 +150,16 @@ public class UserService implements UserDetailsService {
         if (user == null) {
             return false;
         }
-        user.setUsername(email);
+        user.setEmail(email);
+
+        String message = String.format("Здравствуйте, %s! \n" +
+                        "Спасибо за регистрацию! Пожалуйста, подтвердите ваш Email адрес для завершения регистрации. Для этого перейдите по ссылке : http://localhost:8080/active/%s",
+                user.getUsername(),
+                user.getActivationCode()
+        );
+
+        mailSender.send(user.getEmail(), "Активация аккаунта", message);
+
         userRepository.save(user);
         return true;
     }

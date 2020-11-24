@@ -16,6 +16,7 @@
             </#if>
             </div>
         </div>
+
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Password:</label>
             <div class="col-sm-6">
@@ -56,7 +57,7 @@
                 </#if>
             </div>
         </div>
-        <button type="submit" class="btn btn-success"> Добавить</button>
+        <button type="submit" class="btn btn-success"> Зарегистрироваться </button>
     </form>
 </div>
 </@c.page>
