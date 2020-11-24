@@ -1,16 +1,6 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
 
-<#--<div>-->
-    <#--<sec:authorize access="isAuthenticated()">-->
-        <#--<h4><a href="/logout">Выйти</a></h4>-->
-    <#--</sec:authorize>-->
-
-    <#--<div sec:authorize="hasRole('ROLE_ADMIN')">-->
-        <#--<h4><a href="/admin">Пользователи (только админ)</a></h4>-->
-    <#--</div>-->
-<#--</div>-->
-
 <div class="container pb-5 ">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -123,3 +113,4 @@
 </div>
 </@c.page>
 
+<#--<h1>Hello</h1>-->
