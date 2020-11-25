@@ -27,7 +27,7 @@
 
         <div class="col-4">
             <div>
-                <img class="avatar" src="/img/unknown_avatar.png">
+                <img class="avatar" src="/static/img/unknown_avatar.png">
             </div>
             <div class="p-2">
                 <p>Имя: ${name}</p>

@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-primary bg-light">
     <a class="navbar-brand" href="/">
-        <img src="/img/double_logo.png" alt="" style="max-height: 200px; max-width: 200px">
+        <img src="/static/img/double_logo.png" alt="" style="max-height: 200px; max-width: 200px">
         СНК "Медицина путешествий"
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
     <div class="modal-dialog modal-login">
         <div class="modal-content">
             <div class="modal-header">
-                <img class="avatar" src="/img/snk_logo.png">
+                <img class="avatar" src="/static/img/snk_logo.png">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
