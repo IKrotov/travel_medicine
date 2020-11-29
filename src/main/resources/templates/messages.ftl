@@ -6,7 +6,7 @@
      <#list messages as message>
         <div class="row justify-content-md-center m-3">
             <div class="card" style="width: 75%;">
-                <img class="card-img-top" src="/img/${message.fileName}">
+                <#--<img class="card-img-top" src="/img/${message.fileName}">-->
                 <img class="card-img-top" src="${message.file.url}">
                 <div class="card-body">
                     <h5 class="card-title">${message.header}</h5>

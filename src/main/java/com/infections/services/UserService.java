@@ -4,6 +4,7 @@ import com.infections.model.Role;
 import com.infections.model.User;
 import com.infections.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,6 +31,9 @@ public class UserService implements UserDetailsService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private MailSender mailSender;
+
+    @Value("${site.domain}")
+    private String domain;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -67,8 +71,10 @@ public class UserService implements UserDetailsService {
         if (!StringUtils.isEmpty(user.getEmail())){
 
            String message = String.format("Здравствуйте, %s! \n" +
-                    "Спасибо за регистрацию! Пожалуйста, подтвердите ваш Email адрес для завершения регистрации. Для этого перейдите по ссылке : http://localhost:8080/active/%s",
+                    "Спасибо за регистрацию! Пожалуйста, подтвердите ваш Email адрес для завершения регистрации. Для этого перейдите по ссылке : " +
+                           "%s/active/%s",
                     user.getUsername(),
+                    domain,
                     user.getActivationCode()
             );
 
