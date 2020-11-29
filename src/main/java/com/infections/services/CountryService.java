@@ -2,15 +2,14 @@ package com.infections.services;
 
 import com.infections.model.*;
 import com.infections.repos.CountryRepository;
-import com.sun.xml.bind.v2.runtime.unmarshaller.Patcher;
+import com.infections.storage.DropBoxManager;
+import com.infections.storage.StorageManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -24,6 +23,8 @@ public class CountryService {
 
     @Value("${upload.path}")
     private String uploadPath;
+
+    private StorageManager storageManager = new DropBoxManager();
 
     public List<Country> getAllCountry(){
         return countryRepository.findAll();
@@ -106,45 +107,66 @@ public class CountryService {
         countryRepository.save(country);
     }
 
-    public void addCountry(String countryName, MultipartFile flagFileName, MultipartFile mapFileName) {
+    public void addCountry(String countryName, MultipartFile flagFile, MultipartFile mapFile) {
 
         Country country = new Country(countryName);
 
-        if (flagFileName != null && !flagFileName.getOriginalFilename().isEmpty()){
+        String url;
+        String fileName;
 
-            File uploadDir = new File(uploadPath);
+        if (flagFile != null && !flagFile.getOriginalFilename().isEmpty()) {
 
-            if (!uploadDir.exists()){
-                uploadDir.mkdir();
-            }
+            fileName = storageManager.getUUIDFileName(flagFile);
+            url = storageManager.saveFileToStorage(flagFile, fileName);
 
-            String resultFileName = getFullFileName(flagFileName);
-
-            try {
-                flagFileName.transferTo(new File(uploadPath + "/" + resultFileName));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            country.setFlagFileName(resultFileName);
+            country.setFlag(new UploadFile(fileName, url));
         }
 
-        if (mapFileName != null && !mapFileName.getOriginalFilename().isEmpty()){
+        if (mapFile != null && !mapFile.getOriginalFilename().isEmpty()) {
 
-            File uploadDir = new File(uploadPath);
+            fileName = storageManager.getUUIDFileName(mapFile);
+            url = storageManager.saveFileToStorage(mapFile, fileName);
 
-            if (!uploadDir.exists()){
-                uploadDir.mkdir();
-            }
-
-            String resultFileName = getFullFileName(mapFileName);
-
-            try {
-                mapFileName.transferTo(new File(uploadPath + "/" + resultFileName));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            country.setMapFileName(resultFileName);
+            country.setMap(new UploadFile(fileName, url));
         }
+
+//        Country country = new Country(countryName);
+//
+//        if (flagFileName != null && !flagFileName.getOriginalFilename().isEmpty()){
+//
+//            File uploadDir = new File(uploadPath);
+//
+//            if (!uploadDir.exists()){
+//                uploadDir.mkdir();
+//            }
+//
+//            String resultFileName = getFullFileName(flagFileName);
+//
+//            try {
+//                flagFileName.transferTo(new File(uploadPath + "/" + resultFileName));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            country.setFlagFileName(resultFileName);
+//        }
+
+//        if (mapFileName != null && !mapFileName.getOriginalFilename().isEmpty()){
+//
+//            File uploadDir = new File(uploadPath);
+//
+//            if (!uploadDir.exists()){
+//                uploadDir.mkdir();
+//            }
+//
+//            String resultFileName = getFullFileName(mapFileName);
+//
+//            try {
+//                mapFileName.transferTo(new File(uploadPath + "/" + resultFileName));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            country.setMapFileName(resultFileName);
+//        }
 
         countryRepository.save(country);
 
@@ -166,15 +188,22 @@ public class CountryService {
 
         Country country = countryRepository.findById(countryId).orElse(null);
         if (country != null) {
-            if (country.getMapFileName() != null){
-                File mapFile = new File(uploadPath + "/" + country.getMapFileName());
-                mapFile.delete();
+//            if (country.getMapFileName() != null){
+//                File mapFile = new File(uploadPath + "/" + country.getMapFileName());
+//                mapFile.delete();
+//            }
+//            if (country.getFlagFileName() != null){
+//                File flagFile = new File(uploadPath + "/" + country.getFlagFileName());
+//                flagFile.delete();
+//
+//            }
+            if (country.getFlag() != null) {
+                storageManager.deleteFromStorage(country.getFlag().getFileName());
             }
-            if (country.getFlagFileName() != null){
-                File flagFile = new File(uploadPath + "/" + country.getFlagFileName());
-                flagFile.delete();
+            if (country.getMap() != null){
+                storageManager.deleteFromStorage(country.getMap().getFileName());
+            }
 
-            }
             countryRepository.delete(country);
 
         }

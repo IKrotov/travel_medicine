@@ -12,8 +12,12 @@ public class Country {
     private int id;
 
     private String countryName;
-    private String flagFileName;
-    private String mapFileName;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private UploadFile flag;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private UploadFile map;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Vaccine> vaccines;
@@ -33,10 +37,10 @@ public class Country {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private ListOfReferences listOfReferences;
 
-    public Country(String countryName, String flagFileName, String mapFileName) {
+    public Country(String countryName, UploadFile flag, UploadFile map) {
         this.countryName = countryName;
-        this.flagFileName = flagFileName;
-        this.mapFileName = mapFileName;
+        this.flag = flag;
+        this.map = map;
     }
 
     public Country(String countryName){
@@ -59,22 +63,6 @@ public class Country {
 
     public void setCountryName(String name) {
         this.countryName = name;
-    }
-
-    public String getFlagFileName() {
-        return flagFileName;
-    }
-
-    public void setFlagFileName(String flagFileName) {
-        this.flagFileName = flagFileName;
-    }
-
-    public String getMapFileName() {
-        return mapFileName;
-    }
-
-    public void setMapFileName(String mapFileName) {
-        this.mapFileName = mapFileName;
     }
 
     public Set<Vaccine> getVaccines() {
@@ -140,19 +128,33 @@ public class Country {
         this.listOfReferences = listOfReferences;
     }
 
+    public UploadFile getFlag() {
+        return flag;
+    }
+
+    public void setFlag(UploadFile flag) {
+        this.flag = flag;
+    }
+
+    public UploadFile getMap() {
+        return map;
+    }
+
+    public void setMap(UploadFile map) {
+        this.map = map;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Country country = (Country) o;
         return id == country.id &&
-                Objects.equals(countryName, country.countryName) &&
-                Objects.equals(flagFileName, country.flagFileName) &&
-                Objects.equals(mapFileName, country.mapFileName);
+                Objects.equals(countryName, country.countryName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, countryName, flagFileName, mapFileName);
+        return Objects.hash(id, countryName);
     }
 }

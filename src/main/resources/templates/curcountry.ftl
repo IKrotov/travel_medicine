@@ -61,9 +61,10 @@
                 </div>
 
                 <#--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
-                <#if country.mapFileName??>
+                <#if country.map??>
                      <div class="block">
-                         <img src="/img/${country.mapFileName}" style="width: 50%; max-height: 400px">
+                         <#--<img src="/img/${country.mapFileName}" style="width: 50%; max-height: 400px">-->
+                         <img src="${country.map.url}" style="width: 50%; max-height: 400px">
                      </div>
                 </#if>
 

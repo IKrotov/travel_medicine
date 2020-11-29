@@ -9,9 +9,6 @@ import com.infections.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -63,23 +60,13 @@ public class AdminController {
     }
 
     @PostMapping("/addMessage")
-    public String addMessage(@Valid Message message,
-                             BindingResult bindingResult,
-                             Model model,
-                             @RequestParam("file") MultipartFile file){
+    public String addMessage(@RequestParam String header,
+                             @RequestParam String text,
+                             @RequestParam("file") MultipartFile file,
+                             Model model){
 
-        if (bindingResult.hasErrors()){
 
-            Map<String, String> errorsMap = ControllerUtils.getBindingErrorsMap(bindingResult);
-
-            model.mergeAttributes(errorsMap);
-            model.addAttribute("inputMessage", message);
-
-        } else {
-            messageService.addMessage(message, file);
-
-            model.addAttribute("inputMessage", null);
-        }
+        messageService.addMessage(new Message(text, header), file);
 
         model.addAttribute("allUsers", userService.findAllUsers());
         model.addAttribute("messages", messageService.getAllMessages());

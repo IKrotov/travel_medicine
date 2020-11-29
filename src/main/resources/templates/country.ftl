@@ -33,7 +33,8 @@
         <#list allCountry as country>
             <div class="col-md-3">
                 <div class="card mb-3 div-link">
-                    <div class="img-preview" style="background-image:url(/img/${country.flagFileName});">
+                    <#--<div class="img-preview" style="background-image:url(/img/${country.flagFileName});">-->
+                        <div class="img-preview" style="background-image:url(${country.flag.url});">
                     </div>
                     <div class="card-body">
                         <h2 class="card-title">${country.countryName}</h2>

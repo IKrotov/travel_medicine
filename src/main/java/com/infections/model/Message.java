@@ -3,10 +3,7 @@ package com.infections.model;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Message {
@@ -17,7 +14,8 @@ public class Message {
     private String text;
     @Length(max = 255, message = "Длинна заголовка не должна превышать 255 сиволов")
     private String header;
-    private String fileName;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private UploadFile file;
 
     public Message(String text, String header) {
         this.text = text;
@@ -52,11 +50,11 @@ public class Message {
         this.header = header;
     }
 
-    public String getFileName() {
-        return fileName;
+    public UploadFile getFile() {
+        return file;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFile(UploadFile file) {
+        this.file = file;
     }
 }

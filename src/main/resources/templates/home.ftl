@@ -8,6 +8,7 @@
                 <div class="row">
                     <div class="col">
                         <img class="d-block w-100" src="/static/img/carusel1.jpg" style="height: 300px" alt="Первый слайд">
+                            <#--<img class="d-block w-100" src="https://www.dropbox.com/s/3ghosx9nfu4y6ss/testhajhfjahjf.png\?raw=1" style="height: 300px" alt="Первый слайд">-->
                     </div>
                     <div class="col">
                         <img class="d-block w-100" src="/static/img/carusel2.jpg" style="height: 300px" alt="Первый слайд">
@@ -91,7 +92,8 @@
     <#list messages as message>
         <div class="col-md-4">
             <div class="card mb-4">
-                <div class="img-preview" style="background-image:url(/img/${message.fileName});">
+                <#--<div class="img-preview" style="background-image:url(/img/${message.fileName});">-->
+                    <div class="img-preview" style="background-image:url(${message.file.url});">
                 </div>
                 <div class="card-body" style="height: 260px">
                     <h5 class="card-title">${message.header}</h5>

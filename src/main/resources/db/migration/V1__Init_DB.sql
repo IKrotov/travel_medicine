@@ -10,11 +10,11 @@ create table after_the_trip (
 create table country (
     id int4 not null,
     country_name varchar(255),
-    flag_file_name varchar(255),
-    map_file_name varchar(255),
     after_the_trip_id int4,
+    flag_id int8,
     health_id int4,
     list_of_references_id int8,
+    map_id int8,
     prevention_id int4,
     primary key (id)
 );
@@ -44,11 +44,11 @@ create table list_of_references (
 );
 
 create table message (
-    id int8 not null,
-    file_name varchar(255),
-    header varchar(255),
-    text varchar(255),
-    primary key (id)
+  id int8 not null,
+  header varchar(255),
+  text varchar(255),
+  file_id int8,
+  primary key (id)
 );
 
 create table other_diseases (
@@ -90,38 +90,57 @@ create table vaccine (
     primary key (id)
 );
 
-alter table if exists country
-    add constraint FKhdnuxxinrxgj19hnm374imrrn
-    foreign key (after_the_trip_id) references after_the_trip;
+create table upload_file (
+id int8 not null,
+file_name varchar(255) not null,
+url varchar(255),
+primary key (id)
+);
 
 alter table if exists country
-    add constraint FK3vy1x4o4e9pb1gc1augkvfx8f
-    foreign key (health_id) references health;
+ add constraint FKhdnuxxinrxgj19hnm374imrrn
+ foreign key (after_the_trip_id) references after_the_trip;
 
 alter table if exists country
-    add constraint FKor5knkunp3ay0fxqcfesd7rwo
-    foreign key (list_of_references_id) references list_of_references;
+  add constraint FK8ucf4q0dweeitjb0g61oadlj7
+  foreign key (flag_id) references upload_file;
 
 alter table if exists country
-    add constraint FK2sabyo3nojxtnunukxqf9009f
-    foreign key (prevention_id) references prevention;
+  add constraint FK3vy1x4o4e9pb1gc1augkvfx8f
+  foreign key (health_id) references health;
+
+alter table if exists country
+  add constraint FKor5knkunp3ay0fxqcfesd7rwo
+  foreign key (list_of_references_id) references list_of_references;
+
+alter table if exists country
+  add constraint FKs1idyepeykomkmynn8spmdde7
+  foreign key (map_id) references upload_file;
+
+alter table if exists country
+  add constraint FK2sabyo3nojxtnunukxqf9009f
+  foreign key (prevention_id) references prevention;
 
 alter table if exists country_other_diseases_set
-    add constraint FK7n80rgkn01vvx4a7456hknjc
-    foreign key (other_diseases_set_id) references other_diseases;
+  add constraint FK7n80rgkn01vvx4a7456hknjc
+  foreign key (other_diseases_set_id) references other_diseases;
 
 alter table if exists country_other_diseases_set
-    add constraint FKl4qlx6ixx5kygp2i5nh2ac255
-    foreign key (country_id) references country;
+  add constraint FKl4qlx6ixx5kygp2i5nh2ac255
+  foreign key (country_id) references country;
 
 alter table if exists country_vaccines
-    add constraint FKopumyltb2xj6u9ib8c06nqd4f
-    foreign key (vaccines_id) references vaccine;
+  add constraint FKopumyltb2xj6u9ib8c06nqd4f
+  foreign key (vaccines_id) references vaccine;
 
 alter table if exists country_vaccines
-    add constraint FK8p9o4asj0kqgyrpyxkpddntuj
-    foreign key (country_id) references country;
+  add constraint FK8p9o4asj0kqgyrpyxkpddntuj
+  foreign key (country_id) references country;
+
+alter table if exists message
+  add constraint FKgeamve4gqp82twoptx4asc2kh
+  foreign key (file_id) references upload_file;
 
 alter table if exists user_role
-    add constraint FKeqon9sx5vssprq67dxm3s7ump
-    foreign key (user_id) references t_user;
+  add constraint FKeqon9sx5vssprq67dxm3s7ump
+  foreign key (user_id) references t_user;

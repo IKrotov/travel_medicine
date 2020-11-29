@@ -1,7 +1,10 @@
 package com.infections.services;
 
 import com.infections.model.Message;
+import com.infections.model.UploadFile;
 import com.infections.repos.MessageRepository;
+import com.infections.storage.DropBoxManager;
+import com.infections.storage.StorageManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,12 +21,10 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    @Value("${upload.path}")
-    private String uploadPath;
+//    @Value("${upload.path}")
+//    private String uploadPath;
 
-    public void saveMessage(Message message){
-        messageRepository.save(message);
-    }
+    private StorageManager storageManager = new DropBoxManager();
 
     public List<Message> getAllMessages(){
         return messageRepository.findAll();
@@ -33,21 +34,9 @@ public class MessageService {
 
         if (file != null && !file.getOriginalFilename().isEmpty()){
 
-            File uploadDir = new File(uploadPath);
-
-            if (!uploadDir.exists()){
-                uploadDir.mkdir();
-            }
-
-            String uuidFile = UUID.randomUUID().toString();
-            String resultFileName = uuidFile + "." + file.getOriginalFilename();
-
-            try {
-                file.transferTo(new File(uploadPath + "/" + resultFileName));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            message.setFileName(resultFileName);
+            String fileName = storageManager.getUUIDFileName(file);
+            String url = storageManager.saveFileToStorage(file, fileName);
+            message.setFile(new UploadFile(fileName, url));
         }
 
         messageRepository.save(message);
@@ -57,8 +46,7 @@ public class MessageService {
     public boolean deleteMessage(Long messageId) {
         Message message = messageRepository.findById(messageId).orElse(null);
         if (message != null) {
-            File file = new File(uploadPath + "/" + message.getFileName());
-            if (file.delete()) {
+            if (storageManager.deleteFromStorage(message.getFile().getFileName())) {
                 messageRepository.deleteById(messageId);
                 return true;
             }
