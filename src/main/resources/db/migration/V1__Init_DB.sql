@@ -45,6 +45,8 @@ create table list_of_references (
 
 create table message (
   id int8 not null,
+  country_name varchar(255),
+  date timestamp,
   header varchar(255),
   text varchar(255),
   file_id int8,
@@ -91,10 +93,10 @@ create table vaccine (
 );
 
 create table upload_file (
-id int8 not null,
-file_name varchar(255) not null,
-url varchar(255),
-primary key (id)
+    id int8 not null,
+    file_name varchar(255) not null,
+    url varchar(255),
+    primary key (id)
 );
 
 alter table if exists country
@@ -144,3 +146,4 @@ alter table if exists message
 alter table if exists user_role
   add constraint FKeqon9sx5vssprq67dxm3s7ump
   foreign key (user_id) references t_user;
+

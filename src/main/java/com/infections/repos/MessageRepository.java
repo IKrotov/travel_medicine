@@ -14,4 +14,6 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
 
     @Query(value = "SELECT * FROM message ORDER BY id DESC LIMIT 3", nativeQuery = true)
     List<Message> findLast3Messages();
+
+    List<Message> findByCountryName(String countryName);
 }

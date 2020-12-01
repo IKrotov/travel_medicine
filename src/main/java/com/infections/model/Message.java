@@ -4,6 +4,7 @@ package com.infections.model;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Message {
@@ -17,9 +18,15 @@ public class Message {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private UploadFile file;
 
-    public Message(String text, String header) {
+    private Date date;
+
+    private String countryName;
+
+    public Message(String text, String header, Date date, String countryName) {
         this.text = text;
         this.header = header;
+        this.date = date;
+        this.countryName = countryName;
     }
 
     public Message() {
@@ -56,5 +63,21 @@ public class Message {
 
     public void setFile(UploadFile file) {
         this.file = file;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 }

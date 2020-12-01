@@ -86,7 +86,7 @@ public class CountryService {
     public void setHealth(int countryId, String healthText){
        Country country = countryRepository.findById(countryId).get();
 
-       country.setHealth(new Health(replaceBreak(healthText)));
+       country.setHealth(new Health(parseHealthList(healthText)));
 
        countryRepository.save(country);
     }
@@ -130,47 +130,26 @@ public class CountryService {
             country.setMap(new UploadFile(fileName, url));
         }
 
-//        Country country = new Country(countryName);
-//
-//        if (flagFileName != null && !flagFileName.getOriginalFilename().isEmpty()){
-//
-//            File uploadDir = new File(uploadPath);
-//
-//            if (!uploadDir.exists()){
-//                uploadDir.mkdir();
-//            }
-//
-//            String resultFileName = getFullFileName(flagFileName);
-//
-//            try {
-//                flagFileName.transferTo(new File(uploadPath + "/" + resultFileName));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            country.setFlagFileName(resultFileName);
-//        }
-
-//        if (mapFileName != null && !mapFileName.getOriginalFilename().isEmpty()){
-//
-//            File uploadDir = new File(uploadPath);
-//
-//            if (!uploadDir.exists()){
-//                uploadDir.mkdir();
-//            }
-//
-//            String resultFileName = getFullFileName(mapFileName);
-//
-//            try {
-//                mapFileName.transferTo(new File(uploadPath + "/" + resultFileName));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            country.setMapFileName(resultFileName);
-//        }
-
         countryRepository.save(country);
 
 
+    }
+
+    public void deleteCountry(int countryId) {
+
+        Country country = countryRepository.findById(countryId).orElse(null);
+        if (country != null) {
+
+            if (country.getFlag() != null) {
+                storageManager.deleteFromStorage(country.getFlag().getFileName());
+            }
+            if (country.getMap() != null){
+                storageManager.deleteFromStorage(country.getMap().getFileName());
+            }
+
+            countryRepository.delete(country);
+
+        }
     }
 
     private String getFullFileName(MultipartFile file){
@@ -183,30 +162,10 @@ public class CountryService {
         return Pattern.compile("\r\n").matcher(text).replaceAll("<br/>");
     }
 
-
-    public void deleteCountry(int countryId) {
-
-        Country country = countryRepository.findById(countryId).orElse(null);
-        if (country != null) {
-//            if (country.getMapFileName() != null){
-//                File mapFile = new File(uploadPath + "/" + country.getMapFileName());
-//                mapFile.delete();
-//            }
-//            if (country.getFlagFileName() != null){
-//                File flagFile = new File(uploadPath + "/" + country.getFlagFileName());
-//                flagFile.delete();
-//
-//            }
-            if (country.getFlag() != null) {
-                storageManager.deleteFromStorage(country.getFlag().getFileName());
-            }
-            if (country.getMap() != null){
-                storageManager.deleteFromStorage(country.getMap().getFileName());
-            }
-
-            countryRepository.delete(country);
-
-        }
-
+    private String parseHealthList(String text){
+        String textWithSymbols;
+        textWithSymbols = Pattern.compile("--").matcher(text).replaceAll("&#9883;");
+        return replaceBreak(textWithSymbols);
     }
+
 }

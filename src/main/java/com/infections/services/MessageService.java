@@ -61,4 +61,9 @@ public class MessageService {
     public List<Message> getLastMessages(){
         return messageRepository.findLast3Messages();
     }
+
+    public List<Message> getCountryMessages(String filter) {
+
+        return messageRepository.findByCountryName(filter);
+    }
 }
