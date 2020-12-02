@@ -46,6 +46,7 @@ create table list_of_references (
 create table message (
   id int8 not null,
   country_name varchar(255),
+  continent varchar(255),
   date timestamp,
   header varchar(255),
   text varchar(255),
@@ -146,4 +147,3 @@ alter table if exists message
 alter table if exists user_role
   add constraint FKeqon9sx5vssprq67dxm3s7ump
   foreign key (user_id) references t_user;
-

@@ -3,6 +3,14 @@
 <div>
     <form name="message-form" method="post" action="/admin/addMessage" enctype="multipart/form-data">
 
+        <div class="form-group">
+            <label for="continent">Континент</label>
+            <select class="custom-select" name="continent" id="continent" required>
+                <#list continents as continent>
+                    <option value="${continent}">${continent}</option>
+                </#list>
+            </select>
+        </div>
 
         <div class="form-group">
             <label for="countryName">Страна</label>
@@ -17,13 +25,7 @@
 
         <div class="form-group">
             <label for="header">Заголовок новости</label>
-            <textarea name="header" class="form-control ${(headerError??)?string('is-invalid', '')}"
-                      id="header" rows="1"> <#if inputMessage??> "${inputMessage.header}"</#if></textarea>
-            <#if headerError??>
-                <div class="invalid-feedback">
-                    ${headerError}
-                </div>
-            </#if>
+            <textarea name="header" class="form-control" id="header" rows="1"></textarea>
         </div>
         <div class="form-group">
             <label for="text">Текст новости</label>

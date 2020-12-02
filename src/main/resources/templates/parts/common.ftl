@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="/static/home.css">
 
-<title>СНК "Медицина путеществий"</title>
+<title>Медицина путеществий</title>
 </head>
 <body>
 <#include "navbar.ftl">

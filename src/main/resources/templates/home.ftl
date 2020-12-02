@@ -119,7 +119,8 @@
             </div>
         </div>
     </#list>
-
     </div>
+
+    <h5 class="text-center m-2"><a href="/messages">все новости</a></h5>
 </div>
 </@c.page>

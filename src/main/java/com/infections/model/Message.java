@@ -20,13 +20,17 @@ public class Message {
 
     private Date date;
 
+    @Enumerated(EnumType.STRING)
+    private Continent continent;
+
     private String countryName;
 
-    public Message(String text, String header, Date date, String countryName) {
+    public Message(String text, String header, Date date, String countryName, Continent continent) {
         this.text = text;
         this.header = header;
         this.date = date;
         this.countryName = countryName;
+        this.continent = continent;
     }
 
     public Message() {
@@ -79,5 +83,13 @@ public class Message {
 
     public void setCountryName(String countryName) {
         this.countryName = countryName;
+    }
+
+    public Continent getContinent() {
+        return continent;
+    }
+
+    public void setContinent(Continent continent) {
+        this.continent = continent;
     }
 }

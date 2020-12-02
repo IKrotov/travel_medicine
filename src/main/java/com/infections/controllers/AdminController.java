@@ -1,5 +1,6 @@
 package com.infections.controllers;
 
+import com.infections.model.Continent;
 import com.infections.model.Message;
 import com.infections.model.OtherDiseases;
 import com.infections.model.Vaccine;
@@ -14,10 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Map;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -36,6 +36,8 @@ public class AdminController {
         model.addAttribute("allUsers", userService.findAllUsers());
         model.addAttribute("messages", messageService.getAllMessages());
         model.addAttribute("allCountry", countryService.getAllCountry());
+
+        model.addAttribute("continents", Continent.values());
         return "admin";
     }
 
@@ -64,17 +66,19 @@ public class AdminController {
     @PostMapping("/addMessage")
     public String addMessage(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
                              @RequestParam String countryName,
+                             @RequestParam Continent continent,
                              @RequestParam String header,
                              @RequestParam String text,
                              @RequestParam("file") MultipartFile file,
                              Model model){
 
 
-        messageService.addMessage(new Message(text, header, date, countryName), file);
+        messageService.addMessage(new Message(text, header, date, countryName, continent), file);
 
         model.addAttribute("allUsers", userService.findAllUsers());
         model.addAttribute("messages", messageService.getAllMessages());
         model.addAttribute("allCountry", countryService.getAllCountry());
+        model.addAttribute("continents", Continent.values());
 
         return "admin";
     }
