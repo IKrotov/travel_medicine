@@ -10,9 +10,15 @@
             <input type="file" name="flagFileName" class="form-control-file" id="flagFileName">
         </div>
         <div class="form-group">
-            <label for="mapFileName">Прикрепить картинку с картой</label>
-            <input type="file" name="mapFileName" class="form-control-file" id="mapFileName">
+            <label for="memoFileName">Прикрепить файл с памяткой</label>
+            <input type="file" name="memoFileName" class="form-control-file" id="memoFileName">
         </div>
+
+        <div class="form-group">
+            <label for="map">Google maps</label>
+            <textarea name="map" class="form-control" id="map" rows="1"></textarea>
+        </div>
+
         <button type="submit" class="btn btn-success"> Добавить страну </button>
     </form>
 </div>

@@ -8,16 +8,18 @@ create table after_the_trip (
 );
 
 create table country (
-    id int4 not null,
-    country_name varchar(255),
-    after_the_trip_id int4,
-    flag_id int8,
-    health_id int4,
-    list_of_references_id int8,
-    map_id int8,
-    prevention_id int4,
-    primary key (id)
+  id int4 not null,
+  country_name varchar(255),
+  google_map varchar(1024),
+  after_the_trip_id int4,
+  flag_id int8,
+  health_id int4,
+  list_of_references_id int8,
+  memo_file_id int8,
+  prevention_id int4,
+  primary key (id)
 );
+
 
 create table country_other_diseases_set (
     country_id int4 not null,
@@ -118,7 +120,7 @@ alter table if exists country
 
 alter table if exists country
   add constraint FKs1idyepeykomkmynn8spmdde7
-  foreign key (map_id) references upload_file;
+  foreign key (memo_file_id) references upload_file;
 
 alter table if exists country
   add constraint FK2sabyo3nojxtnunukxqf9009f

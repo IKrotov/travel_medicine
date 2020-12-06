@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -107,7 +108,7 @@ public class CountryService {
         countryRepository.save(country);
     }
 
-    public void addCountry(String countryName, MultipartFile flagFile, MultipartFile mapFile) {
+    public void addCountry(String countryName, MultipartFile flagFile, MultipartFile memoFile, String map) {
 
         Country country = new Country(countryName);
 
@@ -122,16 +123,19 @@ public class CountryService {
             country.setFlag(new UploadFile(fileName, url));
         }
 
-        if (mapFile != null && !mapFile.getOriginalFilename().isEmpty()) {
+        if (memoFile != null && !memoFile.getOriginalFilename().isEmpty()) {
 
-            fileName = storageManager.getUUIDFileName(mapFile);
-            url = storageManager.saveFileToStorage(mapFile, fileName);
+            fileName = storageManager.getUUIDFileName(memoFile);
+            url = storageManager.saveFileToStorage(memoFile, fileName);
 
-            country.setMap(new UploadFile(fileName, url));
+            country.setMemoFile(new UploadFile(fileName, url));
+        }
+
+        if (!StringUtils.isEmpty(map)){
+            country.setGoogleMap(map);
         }
 
         countryRepository.save(country);
-
 
     }
 
@@ -143,8 +147,8 @@ public class CountryService {
             if (country.getFlag() != null) {
                 storageManager.deleteFromStorage(country.getFlag().getFileName());
             }
-            if (country.getMap() != null){
-                storageManager.deleteFromStorage(country.getMap().getFileName());
+            if (country.getMemoFile() != null){
+                storageManager.deleteFromStorage(country.getMemoFile().getFileName());
             }
 
             countryRepository.delete(country);
@@ -164,7 +168,7 @@ public class CountryService {
 
     private String parseHealthList(String text){
         String textWithSymbols;
-        textWithSymbols = Pattern.compile("--").matcher(text).replaceAll("&#9883;");
+        textWithSymbols = Pattern.compile("--").matcher(text).replaceAll("&#10004;");
         return replaceBreak(textWithSymbols);
     }
 

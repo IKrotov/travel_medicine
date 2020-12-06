@@ -51,6 +51,7 @@
             <th scope="col">#</th>
             <th scope="col">Заголовок новости</th>
             <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -63,6 +64,11 @@
                 <input type="hidden" name="messageId" value="${message.id}"/>
                 <input type="hidden" name="action" value="delete"/>
                 <button type="submit" class="btn btn-outline-danger">Delete</button>
+            </form>
+        </td>
+        <td>
+            <form action="/admin/editMsg/${message.id}" method="get">
+                <button type="submit" class="btn btn-outline-info">Edit</button>
             </form>
         </td>
     </tr>
