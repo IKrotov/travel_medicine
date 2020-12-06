@@ -1,5 +1,7 @@
 package com.infections.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
@@ -13,11 +15,14 @@ public class Country {
 
     private String countryName;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private UploadFile flag;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private UploadFile map;
+    private UploadFile memoFile;
+
+    @Column(length = 1024)
+    private String googleMap;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Vaccine> vaccines;
@@ -37,10 +42,11 @@ public class Country {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private ListOfReferences listOfReferences;
 
-    public Country(String countryName, UploadFile flag, UploadFile map) {
+    public Country(String countryName, UploadFile flag, UploadFile memoFile, String googleMap) {
         this.countryName = countryName;
         this.flag = flag;
-        this.map = map;
+        this.memoFile = memoFile;
+        this.googleMap = googleMap;
     }
 
     public Country(String countryName){
@@ -136,12 +142,20 @@ public class Country {
         this.flag = flag;
     }
 
-    public UploadFile getMap() {
-        return map;
+    public UploadFile getMemoFile() {
+        return memoFile;
     }
 
-    public void setMap(UploadFile map) {
-        this.map = map;
+    public void setMemoFile(UploadFile memoFile) {
+        this.memoFile = memoFile;
+    }
+
+    public String getGoogleMap() {
+        return googleMap;
+    }
+
+    public void setGoogleMap(String googleMap) {
+        this.googleMap = googleMap;
     }
 
     @Override

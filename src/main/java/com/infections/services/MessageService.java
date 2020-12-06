@@ -21,8 +21,6 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-//    @Value("${upload.path}")
-//    private String uploadPath;
 
     private StorageManager storageManager = new DropBoxManager();
 
@@ -41,6 +39,10 @@ public class MessageService {
 
         messageRepository.save(message);
 
+    }
+
+    public void saveMessage(Message message){
+        messageRepository.save(message);
     }
 
     public boolean deleteMessage(Long messageId) {

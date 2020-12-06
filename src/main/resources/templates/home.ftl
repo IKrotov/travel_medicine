@@ -101,8 +101,11 @@
     <#list messages as message>
         <div class="col-md-4">
             <div class="card mb-4">
-                <#--<div class="img-preview" style="background-image:url(/img/${message.fileName});">-->
+                <#if message.file??>
                     <div class="img-preview" style="background-image:url(${message.file.url});">
+                <#else>
+                     <div class="img-preview" style="background-image:url(/static/img/snk_logo.png);">
+                </#if>
                 </div>
                 <div class="card-body" style="height: 260px">
                     <h5 class="card-title">${message.header}</h5>
@@ -114,6 +117,7 @@
                             ${minitext?substring(0,109)} ...
                         </#if>
                     </p>
+                    <p class="card-text"><small class="text-muted">${message.date}</small></p>
                     <a href="/messages/${message.id}" class="card-link">Открыть новость</a>
                 </div>
             </div>
