@@ -162,9 +162,40 @@ public class AdminController {
     @PostMapping("addCountry")
     public String addCountry(@RequestParam String countryName,
                              @RequestParam("flagFileName") MultipartFile flagFileName,
-                             @RequestParam("mapFileName") MultipartFile mapFileName){
+                             @RequestParam("memoFileName") MultipartFile memoFileName,
+                             @RequestParam("map") String map){
 
-        countryService.addCountry(countryName, flagFileName, mapFileName);
+        countryService.addCountry(countryName, flagFileName, memoFileName, map);
+
+        return "redirect:/admin";
+    }
+
+    @GetMapping("editMsg/{messageId}")
+    public String editMessage(@PathVariable long messageId, Model model){
+
+        Message message = messageService.getCurrentMessage(messageId);
+
+        model.addAttribute("message", message);
+        model.addAttribute("continents", Continent.values());
+
+        return "messageEditor";
+    }
+
+    @PostMapping("editMsg/{messageId}")
+    public String editMessage(@PathVariable long messageId,
+                              @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
+                              @RequestParam String countryName,
+                              @RequestParam Continent continent,
+                              @RequestParam String header,
+                              @RequestParam String text,
+                              @RequestParam("file") MultipartFile file, Model model){
+
+        Message message = messageService.getCurrentMessage(messageId);
+        message.setCountryName(countryName);
+        message.setContinent(continent);
+        message.setHeader(header);
+        message.setText(text);
+        messageService.saveMessage(message);
 
         return "redirect:/admin";
     }

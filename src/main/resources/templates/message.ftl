@@ -10,7 +10,6 @@
 
     <div class="m-3">
         <p align="center" style="text-align: center">
-            <#--<img src="/img/${message.fileName}" style="max-width: 75%; max-height: 600px">-->
             <img src="${message.file.url}" style="max-width: 75%; max-height: 600px">
         </p>
         <div class="m-3">

@@ -60,13 +60,10 @@
                     <h1 class="h2">${country.countryName}</h1>
                 </div>
 
-                <#--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
-                <#if country.map??>
-                     <div class="block">
-                         <#--<img src="/img/${country.mapFileName}" style="width: 50%; max-height: 400px">-->
-                         <img src="${country.map.url}" style="width: 50%; max-height: 400px">
-                     </div>
-                </#if>
+                <!--Google map-->
+                <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+                    ${country.googleMap!}
+                </div>
 
                 <section id="vaccine">
 
