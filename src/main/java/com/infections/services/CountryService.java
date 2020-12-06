@@ -168,7 +168,7 @@ public class CountryService {
 
     private String parseHealthList(String text){
         String textWithSymbols;
-        textWithSymbols = Pattern.compile("--").matcher(text).replaceAll("&#9883;");
+        textWithSymbols = Pattern.compile("--").matcher(text).replaceAll("&#10004;");
         return replaceBreak(textWithSymbols);
     }
 

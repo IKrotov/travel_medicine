@@ -9,9 +9,16 @@
     <hr class="featurette-divider featurette">
 
     <div class="m-3">
+        <#if message.file??>
+            <p align="center" style="text-align: center">
+                <img src="${message.file.url}" style="max-width: 75%; max-height: 600px">
+            </p>
+        <#else>
         <p align="center" style="text-align: center">
-            <img src="${message.file.url}" style="max-width: 75%; max-height: 600px">
+            <img src="/static/img/snk_logo.png" style="max-width: 75%; max-height: 600px">
         </p>
+        </#if>
+
         <div class="m-3">
             <p>${message.text}</p>
         </div>
