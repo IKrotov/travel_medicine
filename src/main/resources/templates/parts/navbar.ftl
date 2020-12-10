@@ -1,8 +1,8 @@
 <#include "security.ftl">
 
-<nav class="navbar navbar-expand-lg navbar-primary bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
     <a class="navbar-brand" href="/">
-        <img src="/static/img/double_logo.png" alt="" style="max-height: 200px; max-width: 200px" class="d-inline-block align-center">
+        <img src="/static/img/double_logo.png" alt="logo" style="max-height: 200px; max-width: 200px" class="d-inline-block align-center">
         Медицина путешествий
     </a>
 
@@ -13,22 +13,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item>">
-                <a class="nav-item nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link text-primary" href="#">О нас<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-item nav-link" href="/messages">Новости</a>
+                <a class="nav-item nav-link text-primary" href="/messages">Новости</a>
             </li>
             <li class="nav-item">
-                <a class="nav-item nav-link" href="#">Вопрос ответ</a>
+                <a class="nav-item nav-link text-primary" href="#">Вопрос ответ</a>
             </li>
             <#if user??>
                 <li class="nav-item">
-                    <a class="nav-item nav-link" href="/profile">Профиль</a>
+                    <a class="nav-item nav-link text-primary" href="/profile">Профиль</a>
                 </li>
             </#if>
             <#if isAdmin>
                 <li class="nav-item">
-                    <a class="nav-item nav-link" href="/admin">Панель администратора</a>
+                    <a class="nav-item nav-link text-primary" href="/admin">Панель администратора</a>
                 </li>
             </#if>
         </ul>
@@ -52,7 +52,7 @@
     <div class="modal-dialog modal-login">
         <div class="modal-content">
             <div class="modal-header">
-                <img class="avatar" src="/static/img/snk_logo.png">
+                <img class="avatar" src="/static/img/snk_logo.png" alt="avatar">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
