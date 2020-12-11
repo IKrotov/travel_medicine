@@ -36,6 +36,7 @@ create table country_vaccines (
 create table health (
     id int4 not null,
     health_text TEXT,
+    file_id int8,
     primary key (id)
 );
 

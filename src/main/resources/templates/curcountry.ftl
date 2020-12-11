@@ -150,11 +150,13 @@
                     <div class="row m-6">
                         <div class="m-3">
                             <h2>Аптечка</h2>
+                            <form name="pdf" method="get" action="/country/getPDF/${country.id}">
+                                <input type="submit" value="PDF">
+                            </form>
                         </div>
                     <#if country.health ??>
                      <div>
                          <p><b>Индивидуальная аптечка</b> (по рекомендациям Всемирной организации здравоохранения):</p>
-                     <#--<br/>-->
                          ${country.health.healthText}
                      </div>
                     </#if>
