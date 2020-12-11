@@ -100,3 +100,9 @@ body {
 .div-link:hover{
     background-color: lightgray;
 }
+
+.button-card-title {
+    padding-top: 75px;
+    padding-bottom: 75px;
+    margin: 0;
+}
