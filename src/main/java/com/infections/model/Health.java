@@ -13,6 +13,9 @@ public class Health {
     @Column(columnDefinition = "TEXT")
     private String healthText;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private UploadFile file;
+
     public Health(String healthText) {
         this.healthText = healthText;
     }
@@ -34,5 +37,13 @@ public class Health {
 
     public void setHealthText(String healthText) {
         this.healthText = healthText;
+    }
+
+    public UploadFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadFile file) {
+        this.file = file;
     }
 }

@@ -4,6 +4,7 @@ import com.infections.model.*;
 import com.infections.repos.CountryRepository;
 import com.infections.storage.DropBoxManager;
 import com.infections.storage.StorageManager;
+import com.infections.utils.PdfGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -87,9 +88,19 @@ public class CountryService {
     public void setHealth(int countryId, String healthText){
        Country country = countryRepository.findById(countryId).get();
 
-       country.setHealth(new Health(parseHealthList(healthText)));
+        PdfGenerator pdfGenerator = new PdfGenerator();
 
-       countryRepository.save(country);
+        String pdfFileName = country.getCountryName() + ".pdf";
+        String text = parseHealthList(healthText);
+
+        if (pdfGenerator.generateFile(pdfFileName, healthText, country.getCountryName())){
+            Health health = new Health(text);
+            health.setFile(new UploadFile(country.getCountryName() + ".pdf"));
+            country.setHealth(health);
+            countryRepository.save(country);
+        }
+
+
     }
 
     public void setAfterTrip(int countryId, String afterTripText){
@@ -155,6 +166,7 @@ public class CountryService {
 
         }
     }
+
 
     private String getFullFileName(MultipartFile file){
         String uuidFile = UUID.randomUUID().toString();
