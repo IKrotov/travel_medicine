@@ -12,6 +12,8 @@
 		border-top: 4px solid #007bff;
         margin-top: -4px;
 	}
+
+
 }
 @media screen and (max-width: 767px) {
 	#team .container #team-block .main-cards {
@@ -22,6 +24,21 @@
 		flex: 1 1 100%;
 		width: 70%;
 	}
+
+	.logo-title {
+		display: none;
+	}
+
+	.img-d-none {
+		display: none;
+	}
+
+	.button-card-title {
+		padding-top: 35px;
+		padding-bottom: 35px;
+		font-size: 26px;
+		margin: 0;
+	}
 }
 @media screen and (max-width: 576px) {
 	.flex-w {
@@ -29,3 +46,11 @@
 		width: 100%;
 	}
 }
+
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+	.button-card-title {
+		font-size: 28px;
+		margin: 0;
+	}
+}
+

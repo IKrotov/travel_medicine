@@ -7,69 +7,69 @@
             <div class="carousel-item active">
                 <div class="row">
                     <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel1.jpg" style="height: 150px" alt="Первый слайд">
+                        <img class="d-block w-100" src="/static/img/carusel1.jpg"  alt="Первый слайд">
                     </div>
                     <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel2.jpg" style="height: 150px" alt="Первый слайд">
+                        <img class="d-block w-100" src="/static/img/carusel2.jpg"  alt="Первый слайд">
                     </div>
                     <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel3.jpg" style="height: 150px" alt="Первый слайд">
+                        <img class="d-block w-100" src="/static/img/carusel3.jpg"  alt="Первый слайд">
                     </div>
 
-                    <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel1.jpg" style="height: 150px" alt="Первый слайд">
+                    <div class="col  img-d-none">
+                        <img class="d-block w-100" src="/static/img/carusel1.jpg"  alt="Первый слайд">
                     </div>
-                    <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel2.jpg" style="height: 150px" alt="Первый слайд">
+                    <div class="col  img-d-none">
+                        <img class="d-block w-100" src="/static/img/carusel2.jpg"  alt="Первый слайд">
                     </div>
-                    <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel3.jpg" style="height: 150px" alt="Первый слайд">
+                    <div class="col  img-d-none">
+                        <img class="d-block w-100" src="/static/img/carusel3.jpg"  alt="Первый слайд">
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="row">
                     <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel4.jpg" style="height: 150px" alt="Первый слайд">
+                        <img class="d-block w-100" src="/static/img/carusel4.jpg"  alt="Первый слайд">
                     </div>
                     <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel5.jpg" style="height: 150px" alt="Первый слайд">
+                        <img class="d-block w-100" src="/static/img/carusel5.jpg"  alt="Первый слайд">
                     </div>
                     <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel6.jpg" style="height: 150px" alt="Первый слайд">
+                        <img class="d-block w-100" src="/static/img/carusel6.jpg"  alt="Первый слайд">
                     </div>
 
-                    <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel4.jpg" style="height: 150px" alt="Первый слайд">
+                    <div class="col img-d-none">
+                        <img class="d-block w-100" src="/static/img/carusel4.jpg"  alt="Первый слайд">
                     </div>
-                    <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel5.jpg" style="height: 150px" alt="Первый слайд">
+                    <div class="col img-d-none">
+                        <img class="d-block w-100" src="/static/img/carusel5.jpg"  alt="Первый слайд">
                     </div>
-                    <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel6.jpg" style="height: 150px" alt="Первый слайд">
+                    <div class="col img-d-none">
+                        <img class="d-block w-100" src="/static/img/carusel6.jpg"  alt="Первый слайд">
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="row">
                     <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel7.jpg" style="height: 150px" alt="Первый слайд">
+                        <img class="d-block w-100" src="/static/img/carusel7.jpg"  alt="Первый слайд">
                     </div>
                     <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel8.jpg" style="height: 150px" alt="Первый слайд">
+                        <img class="d-block w-100" src="/static/img/carusel8.jpg"  alt="Первый слайд">
                     </div>
                     <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel9.jpg" style="height: 150px" alt="Первый слайд">
+                        <img class="d-block w-100" src="/static/img/carusel9.jpg" alt="Первый слайд">
                     </div>
 
-                    <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel7.jpg" style="height: 150px" alt="Первый слайд">
+                    <div class="col img-d-none">
+                        <img class="d-block w-100" src="/static/img/carusel7.jpg"  alt="Первый слайд">
                     </div>
-                    <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel8.jpg" style="height: 150px" alt="Первый слайд">
+                    <div class="col img-d-none">
+                        <img class="d-block w-100" src="/static/img/carusel8.jpg"  alt="Первый слайд">
                     </div>
-                    <div class="col">
-                        <img class="d-block w-100" src="/static/img/carusel9.jpg" style="height: 150px" alt="Первый слайд">
+                    <div class="col img-d-none">
+                        <img class="d-block w-100" src="/static/img/carusel9.jpg"  alt="Первый слайд">
                     </div>
                 </div>
             </div>
@@ -89,23 +89,19 @@
 
 <div class="container text-center mb-3 mt-3">
     <div class="row">
-        <div class="col">
+        <div class="col col-sm-6">
             <div class="card mb-3 mt-3 div-link">
                 <div class="card-body">
-                    <div style="height: 75px"></div>
-                    <h1 class="card-title">Путешественникам</h1>
-                    <div style="height: 75px"></div>
+                    <h1 class="card-title button-card-title">Путешественникам</h1>
                     <a href="/country" class="stretched-link"></a>
                 </div>
             </div>
         </div>
 
-        <div class="col">
+        <div class="col col-sm-6">
             <div class="card mb-3 mt-3 div-link">
                 <div class="card-body">
-                    <div style="height: 75px"></div>
-                    <h1 class="card-title" >Клиницистам</h1>
-                    <div style="height: 75px"></div>
+                    <h1 class="card-title button-card-title" >Клиницистам</h1>
                     <a href="/country" class="stretched-link"></a>
                 </div>
             </div>
