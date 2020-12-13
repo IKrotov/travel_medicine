@@ -2,6 +2,7 @@ package com.infections.controllers;
 
 import com.infections.model.Country;
 import com.infections.services.CountryService;
+import com.infections.storage.DropBoxManager;
 import com.infections.utils.MediaTypeUtils;
 import com.infections.utils.PdfGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,16 +61,19 @@ public class CountryController {
         Country country = countryService.getCountry(countryId);
 
         String fileName = country.getHealth().getFile().getFileName();
+        String url = country.getHealth().getFile().getUrl();
 
         MediaType mediaType = MediaTypeUtils.getMediaTypeForFileName(this.servletContext, fileName);
 
-        Path path = Paths.get("./uploads/" + fileName);
-        byte[] data = Files.readAllBytes(path);
+        //Path path = Paths.get(url);
+        //byte[] data = Files.readAllBytes(path);
+        DropBoxManager dropBoxManager = new DropBoxManager();
+        byte[] data = dropBoxManager.downloadPdf(fileName).toByteArray();
         ByteArrayResource resource = new ByteArrayResource(data);
 
         return ResponseEntity.ok()
                 // Content-Disposition
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + path.getFileName().toString())
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + fileName)
                 // Content-Type
                 .contentType(mediaType) //
                 // Content-Lengh

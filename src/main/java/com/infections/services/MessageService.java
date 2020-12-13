@@ -33,7 +33,7 @@ public class MessageService {
         if (file != null && !file.getOriginalFilename().isEmpty()){
 
             String fileName = storageManager.getUUIDFileName(file);
-            String url = storageManager.saveFileToStorage(file, fileName);
+            String url = storageManager.saveFileToStorage(file, fileName, "/img/");
             message.setFile(new UploadFile(fileName, url));
         }
 
@@ -48,7 +48,7 @@ public class MessageService {
     public boolean deleteMessage(Long messageId) {
         Message message = messageRepository.findById(messageId).orElse(null);
         if (message != null) {
-            if (storageManager.deleteFromStorage(message.getFile().getFileName())) {
+            if (storageManager.deleteFromStorage(message.getFile().getFileName(), "/img/")) {
                 messageRepository.deleteById(messageId);
                 return true;
             }
