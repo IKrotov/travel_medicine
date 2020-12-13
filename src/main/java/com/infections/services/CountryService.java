@@ -88,18 +88,17 @@ public class CountryService {
     public void setHealth(int countryId, String healthText){
        Country country = countryRepository.findById(countryId).get();
 
-        PdfGenerator pdfGenerator = new PdfGenerator();
+        DropBoxManager dropBoxManager = new DropBoxManager();
 
         String pdfFileName = country.getCountryName() + ".pdf";
         String text = parseHealthList(healthText);
-
-        if (pdfGenerator.generateFile(pdfFileName, healthText, country.getCountryName())){
+        String url = dropBoxManager.generatePdfAndSaveToDropBox(pdfFileName, healthText, country.getCountryName());
+        if (url != null){
             Health health = new Health(text);
-            health.setFile(new UploadFile(country.getCountryName() + ".pdf"));
+            health.setFile(new UploadFile(country.getCountryName() + ".pdf", url));
             country.setHealth(health);
             countryRepository.save(country);
         }
-
 
     }
 
@@ -129,7 +128,7 @@ public class CountryService {
         if (flagFile != null && !flagFile.getOriginalFilename().isEmpty()) {
 
             fileName = storageManager.getUUIDFileName(flagFile);
-            url = storageManager.saveFileToStorage(flagFile, fileName);
+            url = storageManager.saveFileToStorage(flagFile, fileName, "/img/");
 
             country.setFlag(new UploadFile(fileName, url));
         }
@@ -137,7 +136,7 @@ public class CountryService {
         if (memoFile != null && !memoFile.getOriginalFilename().isEmpty()) {
 
             fileName = storageManager.getUUIDFileName(memoFile);
-            url = storageManager.saveFileToStorage(memoFile, fileName);
+            url = storageManager.saveFileToStorage(memoFile, fileName, "/img/");
 
             country.setMemoFile(new UploadFile(fileName, url));
         }
@@ -156,10 +155,10 @@ public class CountryService {
         if (country != null) {
 
             if (country.getFlag() != null) {
-                storageManager.deleteFromStorage(country.getFlag().getFileName());
+                storageManager.deleteFromStorage(country.getFlag().getFileName(), "/img/");
             }
             if (country.getMemoFile() != null){
-                storageManager.deleteFromStorage(country.getMemoFile().getFileName());
+                storageManager.deleteFromStorage(country.getMemoFile().getFileName(), "/img/");
             }
 
             countryRepository.delete(country);

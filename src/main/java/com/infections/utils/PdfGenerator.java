@@ -1,17 +1,16 @@
 package com.infections.utils;
 
+import com.infections.storage.DropBoxManager;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.regex.Pattern;
 
 public class PdfGenerator {
 
-    public boolean generateFile(String filename, String text, String countryName){
+    public InputStream generateFile(String filename, String text, String countryName){
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
 
         try {
@@ -27,11 +26,11 @@ public class PdfGenerator {
 
             Font arialbd = new Font(bf, 26);
             Font arialVeryBig = new Font(bf, 40);
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
 
             PdfWriter pdfWriter = PdfWriter.getInstance(document,
-                    new FileOutputStream( "./uploads/" + filename));
+                    os);
 
-//            "/Users/aleksandr/Develop/KatiInfectiosProject/KatiInfections/uploads/"
             document.open();
 
             String[] lines = text.split("\r\n");
@@ -61,10 +60,11 @@ public class PdfGenerator {
 
             document.close();
 
+            return new ByteArrayInputStream(os.toByteArray());
+
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
-        return true;
     }
 }

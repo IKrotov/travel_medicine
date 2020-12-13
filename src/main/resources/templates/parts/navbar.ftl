@@ -1,9 +1,9 @@
 <#include "security.ftl">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
+<nav class="navbar navbar-expand-xl navbar-light bg-light" id="navigation">
     <a class="navbar-brand" href="/">
-        <img src="/static/img/double_logo.png" alt="logo" style="max-height: 200px; max-width: 200px" class="d-inline-block align-center">
-        Медицина путешествий
+        <img src="/static/img/double_logo.png" alt="logo" style="width: 150px" class="d-inline-block align-center">
+        <span class="logo-title" style="font-size: 24px" data-target="collapse">Медицина путешествий</span>
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
             </#if>
             <#if isAdmin>
                 <li class="nav-item">
-                    <a class="nav-item nav-link text-primary" href="/admin">Панель администратора</a>
+                    <a class="nav-item nav-link text-primary" href="/admin">Админ</a>
                 </li>
             </#if>
         </ul>
