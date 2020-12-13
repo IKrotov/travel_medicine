@@ -13,7 +13,7 @@ public class FileStorageManager implements StorageManager {
     private String uploadPath;
 
     @Override
-    public String saveFileToStorage(MultipartFile file, String fileName) {
+    public String saveFileToStorage(MultipartFile file, String fileName, String folder) {
         File uploadDir = new File(uploadPath);
 
         if (!uploadDir.exists()){
@@ -32,7 +32,7 @@ public class FileStorageManager implements StorageManager {
     }
 
     @Override
-    public boolean deleteFromStorage(String filename) {
+    public boolean deleteFromStorage(String filename, String folder) {
         File file = new File(uploadPath + "/" + filename);
         return  file.delete();
     }
