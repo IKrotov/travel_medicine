@@ -106,3 +106,17 @@ body {
     padding-bottom: 75px;
     margin: 0;
 }
+
+.card-title-fix {
+    height: 72px;
+    font-size: 19px;
+}
+
+.card-text-fix {
+    height: 96px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}

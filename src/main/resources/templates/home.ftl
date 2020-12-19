@@ -111,7 +111,7 @@
 
  <hr class="featurette-divider">
 
-<h1 class="text-center mb-5">Новости</h1>
+<h2 class="text-center mb-5">Новости</h2>
 <div class="container">
     <div class="row">
     <#list messages as message>
@@ -124,23 +124,28 @@
                 </#if>
                 </div>
                 <div class="card-body" style="height: 260px">
-                    <h5 class="card-title">${message.header}</h5>
-                    <p class="card-text">
+                    <h3 class="card-title card-title-fix">${message.header}</h3>
+                    <p class="card-text card-text-fix">
                         <#assign minitext=(message.text!"")>
                         <#if minitext?length &lt; 110>
                             ${minitext}
                         <#else>
-                            ${minitext?substring(0,109)} ...
+                            ${minitext?substring(0,109)}...
                         </#if>
                     </p>
-                    <p class="card-text"><small class="text-muted">${message.date}</small></p>
+
                     <a href="/messages/${message.id}" class="card-link">Открыть новость</a>
+                </div>
+                <div class="card-footer footer-content">
+                    <small class="text-muted">${message.date}</small>
+                    <small class="text-muted">Евразия, Россия</small>
                 </div>
             </div>
         </div>
     </#list>
     </div>
-
-    <h5 class="text-center m-2"><a href="/messages">все новости</a></h5>
+    <div class="text-center">
+    <button type="button" class="btn btn-light"><a href="/messages">Все новости</a></button>
+    </div>
 </div>
 </@c.page>
