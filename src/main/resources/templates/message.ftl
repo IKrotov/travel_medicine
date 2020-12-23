@@ -2,24 +2,23 @@
 
 <@c.page>
 
-<div class="container mt-5">
-
+<div class="container bg-light" style="padding-bottom: 10px; padding-top: 20px">
     <h2 align="center" class="header">${message.header}</h2>
 
     <hr class="featurette-divider featurette">
 
-    <div class="m-3">
+    <div class="container" style="max-width: 800px">
         <#if message.file??>
-            <p align="center" style="text-align: center">
-                <img src="${message.file.url}" style="max-width: 75%; max-height: 600px">
-            </p>
+            <div style="text-align: center; margin-bottom: 20px">
+                <img src="${message.file.url}" style="width: 100%">
+            </div>
         <#else>
-        <p align="center" style="text-align: center">
-            <img src="/static/img/snk_logo.png" style="max-width: 75%; max-height: 600px">
-        </p>
+        <div>
+            <img src="/static/img/snk_logo.png">
+        </div>
         </#if>
 
-        <div class="m-3">
+        <div>
             <p>${message.text}</p>
         </div>
     </div>
