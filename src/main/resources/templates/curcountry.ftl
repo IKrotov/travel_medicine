@@ -6,47 +6,47 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="sidebar-sticky pt-3">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="sidebar-sticky pt-3 sticky-top">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link curcountry-sidebar-link" href="#">
                                 <span data-feather="home"></span>
                                 Общая информация <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#vaccine">
+                            <a class="nav-link curcountry-sidebar-link" href="#vaccine">
                                 <span data-feather="file"></span>
                                 Вакцинация
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#diseases">
+                            <a class="nav-link curcountry-sidebar-link" href="#diseases">
                                 <span data-feather="shopping-cart"></span>
                                 Заболевания
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#prevention">
+                            <a class="nav-link curcountry-sidebar-link" href="#prevention">
                                 <span data-feather="users"></span>
                                 Профилактика
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#health">
+                            <a class="nav-link curcountry-sidebar-link" href="#health">
                                 <span data-feather="bar-chart-2"></span>
                                 Аптечка
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#after-trip">
+                            <a class="nav-link curcountry-sidebar-link" href="#after-trip">
                                 <span data-feather="layers"></span>
-                                После поездки
+                                После<br> поездки
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#ref-list">
+                            <a class="nav-link curcountry-sidebar-link" href="#ref-list">
                                 <span data-feather="layers"></span>
                                 Список источников
                             </a>
