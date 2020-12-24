@@ -138,7 +138,7 @@
                 </div>
                 <div class="card-footer footer-content">
                     <small class="text-muted">${message.date}</small>
-                    <small class="text-muted">Евразия, Россия</small>
+                    <small class="text-muted">${message.continent}, ${message.countryName}</small>
                 </div>
             </div>
         </div>
