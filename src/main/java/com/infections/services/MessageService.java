@@ -1,5 +1,6 @@
 package com.infections.services;
 
+import com.infections.model.Continent;
 import com.infections.model.Message;
 import com.infections.model.UploadFile;
 import com.infections.repos.MessageRepository;
@@ -67,5 +68,10 @@ public class MessageService {
     public List<Message> getCountryMessages(String filter) {
 
         return messageRepository.findByCountryName(filter);
+    }
+
+    public List<Message> getContinentMessages(Continent continent){
+
+        return messageRepository.findByContinent(continent);
     }
 }
