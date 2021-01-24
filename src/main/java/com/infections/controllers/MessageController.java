@@ -1,5 +1,6 @@
 package com.infections.controllers;
 
+import com.infections.model.Continent;
 import com.infections.model.Message;
 import com.infections.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,17 @@ public class MessageController {
 
         model.addAttribute("messages", messages);
         model.addAttribute("filter", filter);
+
+        return "messages";
+    }
+
+    @GetMapping("/messages/continent/{continent}")
+    public String getContinentMessages(@PathVariable Continent continent, Model model){
+        List<Message> messages;
+
+        messages = messageService.getContinentMessages(continent);
+
+        model.addAttribute("messages", messages);
 
         return "messages";
     }
