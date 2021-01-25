@@ -7,58 +7,63 @@
     <h2 class="title text-center">Новости</h2>
 
     <div class="row m-3">
-        <div class="col">
-            <h5 class="header">Африка</h5>
-            <img class="card-img" src="/static/img/560px-Africa_(orthographic_projection).svg.png">
 
+        <div class="col">
             <form method="get" action="/messages/continent/AFRICA">
-                <input type="submit" content="Найти">
+                <button class="btn btn-outline-light" type="submit">
+                    <h5 class="header">Африка</h5>
+                    <img class="card-img" src="/static/img/560px-Africa_(orthographic_projection).svg.png">
+                </button>
             </form>
-
         </div>
-        <div class="col">
-            <h5 class="header">Европа</h5>
-            <img class="card-img" src="/static/img/1200px-Europe_orthographic_Caucasus_Urals_boundary.svg.png">
 
+        <div class="col">
             <form method="get" action="/messages/continent/EUROPE">
-                <input type="submit" content="Найти">
+                <button class="btn btn-outline-light" type="submit">
+                    <h5 class="header">Европа</h5>
+                    <img class="card-img" src="/static/img/1200px-Europe_orthographic_Caucasus_Urals_boundary.svg.png">
+                </button>
             </form>
-
         </div>
-        <div class="col">
-            <h5 class="header">Америка</h5>
-            <img class="card-img" src="/static/img/Americas_(orthographic_projection).svg.png">
 
+        <div class="col">
             <form method="get" action="/messages/continent/AMERICA">
-                <input type="submit" content="Найти">
+                <button class="btn btn-outline-light" type="submit">
+                    <h5 class="header">Америка</h5>
+                    <img class="card-img" src="/static/img/Americas_(orthographic_projection).svg.png">
+                </button>
             </form>
-
         </div>
-        <div class="col">
-            <h5 class="header">Азия</h5>
-            <img class="card-img" src="/static/img/Asia_(orthographic_projection).svg">
 
+        <div class="col">
             <form method="get" action="/messages/continent/ASIA">
-                <input type="submit" content="Найти">
+                <button class="btn btn-outline-light" type="submit">
+                    <h5 class="header">Азия</h5>
+                    <img class="card-img" src="/static/img/Asia_(orthographic_projection).svg">
+                </button>
             </form>
         </div>
 
         <div class="col">
-            <h5 class="header">Австралия</h5>
-            <img class="card-img" src="/static/img/Australia_(orthographic_projection).svg.png">
-
             <form method="get" action="/messages/continent/AUSTRALIA">
-                <input type="submit" content="Найти">
+                <button class="btn btn-outline-light" type="submit">
+                    <h5 class="header">Австралия</h5>
+                    <img class="card-img" src="/static/img/Australia_(orthographic_projection).svg.png">
+                </button>
             </form>
         </div>
+
     </div>
 
-    <form name="message-form" class="form-inline" method="get" action="/messages" enctype="multipart/form-data">
-        <div class="form-group">
-            <input type="text" name="filter" class="form-control" value="${filter!}" placeholder="Название страны">
-            <button type="submit" class="btn btn-primary ml-2">Найти</button>
-        </div>
-    </form>
+    <div class="row justify-content-md-center m-3">
+        <form name="message-form" class="form-inline" method="get" action="/messages" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="text" name="filter" class="form-control" value="${filter!}" placeholder="Название страны">
+                <button type="submit" class="btn btn-primary ml-2">Найти</button>
+            </div>
+        </form>
+    </div>
+
 
      <#list messages as message>
         <div class="row justify-content-md-center m-3">
