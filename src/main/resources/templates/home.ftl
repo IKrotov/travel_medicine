@@ -137,7 +137,9 @@
                     <a href="/messages/${message.id}" class="card-link">Открыть новость</a>
                 </div>
                 <div class="card-footer footer-content">
-                    <small class="text-muted">${message.date}</small>
+                    <small class="text-muted">
+                            ${message.date}
+                    </small>
                     <small class="text-muted">${message.continent}, ${message.countryName}</small>
                 </div>
             </div>
