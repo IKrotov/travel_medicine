@@ -10,7 +10,7 @@
 
         <div class="col">
             <form method="get" action="/messages/continent/AFRICA">
-                <button class="btn btn-outline-light" type="submit">
+                <button class="btn btn-light" type="submit">
                     <h5 class="header">Африка</h5>
                     <img class="card-img" src="/static/img/560px-Africa_(orthographic_projection).svg.png">
                 </button>
@@ -19,7 +19,7 @@
 
         <div class="col">
             <form method="get" action="/messages/continent/EUROPE">
-                <button class="btn btn-outline-light" type="submit">
+                <button class="btn btn-light" type="submit">
                     <h5 class="header">Европа</h5>
                     <img class="card-img" src="/static/img/1200px-Europe_orthographic_Caucasus_Urals_boundary.svg.png">
                 </button>
@@ -28,7 +28,7 @@
 
         <div class="col">
             <form method="get" action="/messages/continent/AMERICA">
-                <button class="btn btn-outline-light" type="submit">
+                <button class="btn btn-light" type="submit">
                     <h5 class="header">Америка</h5>
                     <img class="card-img" src="/static/img/Americas_(orthographic_projection).svg.png">
                 </button>
@@ -37,7 +37,7 @@
 
         <div class="col">
             <form method="get" action="/messages/continent/ASIA">
-                <button class="btn btn-outline-light" type="submit">
+                <button class="btn btn-light" type="submit">
                     <h5 class="header">Азия</h5>
                     <img class="card-img" src="/static/img/Asia_(orthographic_projection).svg">
                 </button>
@@ -46,7 +46,7 @@
 
         <div class="col">
             <form method="get" action="/messages/continent/AUSTRALIA">
-                <button class="btn btn-outline-light" type="submit">
+                <button class="btn btn-light" type="submit">
                     <h5 class="header">Австралия</h5>
                     <img class="card-img" src="/static/img/Australia_(orthographic_projection).svg.png">
                 </button>

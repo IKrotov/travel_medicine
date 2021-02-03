@@ -4,6 +4,8 @@ package com.infections.model;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -69,9 +71,9 @@ public class Message {
         this.file = file;
     }
 
-    public Date getDate() {
-        return date;
-    }
+//    private Date getDate() {
+//        return date;
+//    }
 
     public void setDate(Date date) {
         this.date = date;
@@ -91,5 +93,10 @@ public class Message {
 
     public void setContinent(Continent continent) {
         this.continent = continent;
+    }
+
+    public String getDate(){
+
+        return new SimpleDateFormat("dd.MM.yyyy").format(date);
     }
 }

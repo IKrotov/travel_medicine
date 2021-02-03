@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/static/home.css">
     <link rel="stylesheet" href="/static/css/media.css">
 
-<title>Медицина путеществий</title>
+<title>Медицина путешествий</title>
 </head>
 <body>
 <div class="container-xl">
